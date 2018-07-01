@@ -19,6 +19,10 @@ body {
   height: 100vh;
 }
 
+#wrapper {
+  padding: 15px;
+}
+
 @font-face {
   font-family: newYorkTimes;
   src: url(OldeEnglish.ttf);
