@@ -15338,9 +15338,8 @@ const translate = require("moji-translate");
 const moment = require("moment");
 
 var headlinesData;
-var currentHeadline = "";
+var currentHeadline = {};
 let emojiHeadline = "";
-var author = "The New York Times";
 
 /*
 An IFrame (Inline Frame) is an HTML document embedded inside another HTML 
@@ -15357,13 +15356,13 @@ function inIframe() {
   }
 }
 
-function openURL(url) {
-  window.open(
-    url,
-    "Share",
-    "width=550, height=400, toolbar=0, scrollbars=1 ,location=0 ,statusbar=0,menubar=0, resizable=0"
-  );
-}
+// function openURL(url) {
+//   window.open(
+//     url,
+//     "Share",
+//     "width=550, height=400, toolbar=0, scrollbars=1 ,location=0 ,statusbar=0,menubar=0, resizable=0"
+//   );
+// }
 
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json";
 url +=
@@ -15390,41 +15389,62 @@ function getRandomHeadline() {
 }
 
 function getQuote() {
-  let randomHeadline = getRandomHeadline();
-  let translatedHeadline = translate.translate(randomHeadline.title);
+  let randomHeadline;
+  let translatedHeadline;
 
-  while (translatedHeadline === randomHeadline.title) {
+  do {
     randomHeadline = getRandomHeadline();
     translatedHeadline = translate.translate(randomHeadline.title);
-  }
+  } while (randomHeadline.title === translatedHeadline);
 
-  console.log("title", randomHeadline);
-  console.log("transolation", translatedHeadline);
-
-  currentHeadline = randomHeadline.title;
+  currentHeadline = randomHeadline;
   emojiHeadline = translatedHeadline;
 
-  let headlineImage = randomHeadline.multimedia.filter(
+  let subtext = translate.translate(currentHeadline.abstract);
+  let headlineImage = currentHeadline.multimedia.filter(
     image => image.format === "thumbLarge"
   )[0];
 
   $(".quote-text").animate({ opacity: 0 }, 500, function() {
     $(this).animate({ opacity: 1 }, 500);
     $("#text").text(emojiHeadline);
+    $("#subtext").text(subtext);
   });
 
   $(".quote-image").animate({ opacity: 0 }, 500, function() {
     $(this).animate({ opacity: 1 }, 500);
     $("#image").attr("src", headlineImage.url);
   });
+
+  $(".quote-author").animate({ opacity: 0 }, 500, function() {
+    $(this).animate({ opacity: 1 }, 500);
+    $("#author").html(currentHeadline.byline);
+  });
+
+  let tweetUrl =
+    "https://twitter.com/intent/tweet?text=" +
+    encodeURIComponent('"' + emojiHeadline + '" -The New York Times');
+  console.log("URL", tweetUrl);
+  $("#tweet-quote").attr("href", tweetUrl);
+
+  let tumblrUrl =
+    "https://www.tumblr.com/widgets/share/tool?posttype=quote&caption=" +
+    encodeURIComponent("The New York Times") +
+    "&content=" +
+    encodeURIComponent(emojiHeadline) +
+    "&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button";
+  $("#tumblr-quote").attr("href", tumblrUrl);
+
+  $("#quote-source").attr("href", currentHeadline.url);
 }
 
 $(document).ready(function() {
   getQuotes().then(() => {
     getQuote();
   });
-
   $("#date").text(moment().format("MMMM Do YYYY"));
+
+  $("#new-quote").on("click", getQuote);
 });
 
 },{"moji-translate":4,"moment":5}]},{},[6]);

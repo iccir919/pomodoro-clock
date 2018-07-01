@@ -18,22 +18,29 @@
 
 <body>
     <div id="wrapper">
+        <header>
+            <h1 id="logo">The New York Times</h1>
+            <span id="date"></span>
+        </header>
+
         <div id="quote-box">
-            <div class="quote-author">
-                <h1 id="author">The New York Times</h1>
-                <span id="date"></span>
-            </div>
-            <div class="quote-image">
-                <img id="image">
-            </div>
-            <div class="quote-text">
-                <span id="text"></span>
-            </div>
+            <a id="quote-source" target="_blank">
+                <div class="quote-image">
+                    <img id="image">
+                </div>
+                <div class="quote-text">
+                    <p id="text"></p>
+                    <p id="subtext"></p>
+                </div>
+                <div class="quote-author">
+                    <span id="author"></span>
+                </div>
+            </a>
             <div class="buttons">
-                <a class="button" id="tweet-quote" title="Tweet this quote!" target="_blank">
+                <a class="button" href="" id="tweet-quote" title="Tweet this quote!" target="_blank">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a class="button" id="tumblr-quote" title="Post this quote on tumblr!" target="_blank">
+                <a class="button" href="" id="tumblr-quote" title="Post this quote on tumblr!" target="_blank">
                     <i class="fab fa-tumblr"></i>
                 </a>
                 <button class="button" id="new-quote">New headline</button>

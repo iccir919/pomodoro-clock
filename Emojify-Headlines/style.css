@@ -19,32 +19,44 @@ body {
   height: 100vh;
 }
 
-#quote-box {
-  position: relative;
-  width: 450px;
-  padding: 40px 50px;
-  display: table;
-  background-color: #fff;
-}
-
 @font-face {
   font-family: newYorkTimes;
   src: url(OldeEnglish.ttf);
 }
 
-.quote-author {
+header {
+  padding: 20px 50px 10px 50px;
+  position: relative;
   width: 450px;
   height: auto;
   clear: both;
-  padding-bottom: 10px;
-  margin-bottom: 35px;
   text-align: center;
   border-bottom: 5px solid black;
 }
 
-.quote-author h1 {
+#logo {
   font-family: newYorkTimes;
-  font-size: 2.5em;
+  font-size: 2.75em;
+  padding-bottom: 10px;
+}
+
+#date {
+  height: auto;
+  clear: both;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+#quote-box {
+  position: relative;
+  width: 450px;
+  padding: 20px 50px 40px 50px;
+  display: table;
+  background-color: #fff;
+}
+
+#quote-source {
+  text-decoration: none;
 }
 
 .quote-image {
@@ -55,7 +67,7 @@ body {
 }
 
 #image {
-  max-width: 100%;
+  max-width: 150%;
   display: block;
   height: auto;
   margin: auto;
@@ -66,16 +78,28 @@ body {
   width: 450px;
   height: auto;
   clear: both;
-  font-weight: 500;
+}
+
+#text {
+  font-weight: 450;
   font-size: 1.5em;
   color: black;
 }
 
-#date {
+#subtext {
+  font-weight: 350;
+  font-size: 1em;
+  color: black;
+}
+
+.quote-author {
+  width: 450px;
   height: auto;
   clear: both;
-  font-weight: 500;
-  font-size: 0.75em;
+  padding-top: 20px;
+  font-size: 1em;
+  text-align: center;
+  color: grey;
 }
 
 .buttons {
