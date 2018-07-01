@@ -2175,12 +2175,6 @@ module.exports={
     "fitzpatrick_scale": false,
     "category": "animals_and_nature"
   },
-  "fox_face": {
-    "keywords": ["animal", "nature", "face"],
-    "char": "🦊",
-    "fitzpatrick_scale": false,
-    "category": "animals_and_nature"
-  },
   "bear": {
     "keywords": ["animal", "nature", "wild"],
     "char": "🐻",
@@ -2232,12 +2226,6 @@ module.exports={
   "frog": {
     "keywords": ["animal", "nature", "croak", "toad"],
     "char": "🐸",
-    "fitzpatrick_scale": false,
-    "category": "animals_and_nature"
-  },
-  "squid": {
-    "keywords": ["animal", "nature", "ocean", "sea"],
-    "char": "🦑",
     "fitzpatrick_scale": false,
     "category": "animals_and_nature"
   },
@@ -2451,20 +2439,6 @@ module.exports={
     "fitzpatrick_scale": false,
     "category": "animals_and_nature"
   },
-  "sauropod": {
-    "keywords": [
-      "animal",
-      "nature",
-      "dinosaur",
-      "brachiosaurus",
-      "brontosaurus",
-      "diplodocus",
-      "extinct"
-    ],
-    "char": "🦕",
-    "fitzpatrick_scale": false,
-    "category": "animals_and_nature"
-  },
   "turtle": {
     "keywords": ["animal", "slow", "nature", "tortoise"],
     "char": "🐢",
@@ -2543,12 +2517,6 @@ module.exports={
     "fitzpatrick_scale": false,
     "category": "animals_and_nature"
   },
-  "zebra": {
-    "keywords": ["animal", "nature", "stripes", "safari"],
-    "char": "🦓",
-    "fitzpatrick_scale": false,
-    "category": "animals_and_nature"
-  },
   "tiger2": {
     "keywords": ["animal", "nature", "roar"],
     "char": "🐅",
@@ -2588,12 +2556,6 @@ module.exports={
   "camel": {
     "keywords": ["animal", "nature", "hot", "desert", "hump"],
     "char": "🐫",
-    "fitzpatrick_scale": false,
-    "category": "animals_and_nature"
-  },
-  "giraffe": {
-    "keywords": ["animal", "nature", "spots", "safari"],
-    "char": "🦒",
     "fitzpatrick_scale": false,
     "category": "animals_and_nature"
   },
@@ -2696,12 +2658,6 @@ module.exports={
   "chipmunk": {
     "keywords": ["animal", "nature", "rodent", "squirrel"],
     "char": "🐿",
-    "fitzpatrick_scale": false,
-    "category": "animals_and_nature"
-  },
-  "hedgehog": {
-    "keywords": ["animal", "nature", "spiny"],
-    "char": "🦔",
     "fitzpatrick_scale": false,
     "category": "animals_and_nature"
   },
@@ -3399,30 +3355,6 @@ module.exports={
     "fitzpatrick_scale": false,
     "category": "food_and_drink"
   },
-  "coconut": {
-    "keywords": ["fruit", "nature", "food", "palm"],
-    "char": "🥥",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "kiwi_fruit": {
-    "keywords": ["fruit", "food"],
-    "char": "🥝",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "avocado": {
-    "keywords": ["fruit", "food"],
-    "char": "🥑",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "broccoli": {
-    "keywords": ["fruit", "food", "vegetable"],
-    "char": "🥦",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
   "tomato": {
     "keywords": ["fruit", "vegetable", "nature", "food"],
     "char": "🍅",
@@ -3432,18 +3364,6 @@ module.exports={
   "eggplant": {
     "keywords": ["vegetable", "nature", "food", "aubergine"],
     "char": "🍆",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "cucumber": {
-    "keywords": ["fruit", "food", "pickle"],
-    "char": "🥒",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "carrot": {
-    "keywords": ["vegetable", "food", "orange"],
-    "char": "🥕",
     "fitzpatrick_scale": false,
     "category": "food_and_drink"
   },
@@ -3492,18 +3412,6 @@ module.exports={
   "bread": {
     "keywords": ["food", "wheat", "breakfast", "toast"],
     "char": "🍞",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "baguette_bread": {
-    "keywords": ["food", "bread", "french"],
-    "char": "🥖",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "pretzel": {
-    "keywords": ["food", "bread", "twisted"],
-    "char": "🥨",
     "fitzpatrick_scale": false,
     "category": "food_and_drink"
   },
@@ -3595,18 +3503,6 @@ module.exports={
   "pizza": {
     "keywords": ["food", "party"],
     "char": "🍕",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "sandwich": {
-    "keywords": ["food", "lunch", "bread"],
-    "char": "🥪",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "canned_food": {
-    "keywords": ["food", "soup"],
-    "char": "🥫",
     "fitzpatrick_scale": false,
     "category": "food_and_drink"
   },
@@ -3940,12 +3836,6 @@ module.exports={
     "fitzpatrick_scale": false,
     "category": "food_and_drink"
   },
-  "spoon": {
-    "keywords": ["cutlery", "kitchen", "tableware"],
-    "char": "🥄",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
   "fork_and_knife": {
     "keywords": ["cutlery", "kitchen"],
     "char": "🍴",
@@ -3955,24 +3845,6 @@ module.exports={
   "plate_with_cutlery": {
     "keywords": ["food", "eat", "meal", "lunch", "dinner", "restaurant"],
     "char": "🍽",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "bowl_with_spoon": {
-    "keywords": ["food", "breakfast", "cereal", "oatmeal", "porridge"],
-    "char": "🥣",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "takeout_box": {
-    "keywords": ["food", "leftovers"],
-    "char": "🥡",
-    "fitzpatrick_scale": false,
-    "category": "food_and_drink"
-  },
-  "chopsticks": {
-    "keywords": ["food"],
-    "char": "🥢",
     "fitzpatrick_scale": false,
     "category": "food_and_drink"
   },
@@ -4192,18 +4064,6 @@ module.exports={
     "fitzpatrick_scale": true,
     "category": "activity"
   },
-  "climbing_woman": {
-    "keywords": ["sports", "hobby", "woman", "female", "rock"],
-    "char": "🧗‍♀️",
-    "fitzpatrick_scale": true,
-    "category": "activity"
-  },
-  "climbing_man": {
-    "keywords": ["sports", "hobby", "man", "male", "rock"],
-    "char": "🧗‍♂️",
-    "fitzpatrick_scale": true,
-    "category": "activity"
-  },
   "swimming_woman": {
     "keywords": [
       "sports",
@@ -4222,18 +4082,6 @@ module.exports={
   "swimming_man": {
     "keywords": ["sports", "exercise", "human", "athlete", "water", "summer"],
     "char": "🏊",
-    "fitzpatrick_scale": true,
-    "category": "activity"
-  },
-  "woman_playing_water_polo": {
-    "keywords": ["sports", "pool"],
-    "char": "🤽‍♀️",
-    "fitzpatrick_scale": true,
-    "category": "activity"
-  },
-  "man_playing_water_polo": {
-    "keywords": ["sports", "pool"],
-    "char": "🤽‍♂️",
     "fitzpatrick_scale": true,
     "category": "activity"
   },
@@ -4383,18 +4231,6 @@ module.exports={
     "fitzpatrick_scale": false,
     "category": "activity"
   },
-  "1st_place_medal": {
-    "keywords": ["award", "winning", "first"],
-    "char": "🥇",
-    "fitzpatrick_scale": false,
-    "category": "activity"
-  },
-  "2nd_place_medal": {
-    "keywords": ["award", "second"],
-    "char": "🥈",
-    "fitzpatrick_scale": false,
-    "category": "activity"
-  },
   "3rd_place_medal": {
     "keywords": ["award", "third"],
     "char": "🥉",
@@ -4441,18 +4277,6 @@ module.exports={
     "keywords": ["festival", "carnival", "party"],
     "char": "🎪",
     "fitzpatrick_scale": false,
-    "category": "activity"
-  },
-  "woman_juggling": {
-    "keywords": ["juggle", "balance", "skill", "multitask"],
-    "char": "🤹‍♀️",
-    "fitzpatrick_scale": true,
-    "category": "activity"
-  },
-  "man_juggling": {
-    "keywords": ["juggle", "balance", "skill", "multitask"],
-    "char": "🤹‍♂️",
-    "fitzpatrick_scale": true,
     "category": "activity"
   },
   "microphone": {
@@ -4633,12 +4457,6 @@ module.exports={
   "tractor": {
     "keywords": ["vehicle", "car", "farming", "agriculture"],
     "char": "🚜",
-    "fitzpatrick_scale": false,
-    "category": "travel_and_places"
-  },
-  "kick_scooter": {
-    "keywords": ["vehicle", "kick", "razor"],
-    "char": "🛴",
     "fitzpatrick_scale": false,
     "category": "travel_and_places"
   },
