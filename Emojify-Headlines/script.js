@@ -1,7 +1,9 @@
 const translate = require("moji-translate");
+const moment = require("moment");
 
 var headlinesData;
 var currentHeadline = "";
+let emojiHeadline = "";
 var author = "The New York Times";
 
 /*
@@ -42,13 +44,49 @@ function getQuotes() {
     url: url,
     success: function(json) {
       console.log(json);
+      headlinesData = json.results;
     }
   });
 }
 
+function getRandomHeadline() {
+  return headlinesData[Math.floor(Math.random() * headlinesData.length)];
+}
+
+function getQuote() {
+  let randomHeadline = getRandomHeadline();
+  let translatedHeadline = translate.translate(randomHeadline.title);
+
+  while (translatedHeadline === randomHeadline.title) {
+    randomHeadline = getRandomHeadline();
+    translatedHeadline = translate.translate(randomHeadline.title);
+  }
+
+  console.log("title", randomHeadline);
+  console.log("transolation", translatedHeadline);
+
+  currentHeadline = randomHeadline.title;
+  emojiHeadline = translatedHeadline;
+
+  let headlineImage = randomHeadline.multimedia.filter(
+    image => image.format === "thumbLarge"
+  )[0];
+
+  $(".quote-text").animate({ opacity: 0 }, 500, function() {
+    $(this).animate({ opacity: 1 }, 500);
+    $("#text").text(emojiHeadline);
+  });
+
+  $(".quote-image").animate({ opacity: 0 }, 500, function() {
+    $(this).animate({ opacity: 1 }, 500);
+    $("#image").attr("src", headlineImage.url);
+  });
+}
+
 $(document).ready(function() {
-  getQuotes();
-  console.log(
-    translate.translate("the house is on fire and the cat is eating the cake")
-  );
+  getQuotes().then(() => {
+    getQuote();
+  });
+
+  $("#date").text(moment().format("MMMM Do YYYY"));
 });
