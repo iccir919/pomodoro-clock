@@ -1,9 +1,9 @@
 $padWidth: 100px;
 $padHeight: 80px;
-@import url("https://fonts.googleapis.com/css?family=Russo+One");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 
 body {
-  font-family: Russo One;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 body {
@@ -16,12 +16,4 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-.inner-container {
-  outline: 5px solid orange;
-  position: relative;
-  width: 660px;
-  text-align: center;
-  background-color: lighten(grey, 20%);
 }
