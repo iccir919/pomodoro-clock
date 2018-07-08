@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import style from "./style.css";
 import DrumPad from "./DrumPad.js";
 
 class PadBank extends Component {
@@ -26,7 +25,7 @@ class PadBank extends Component {
             />
           );
         }));
-    return <div className={style.padBank}>{padBank}</div>;
+    return <div>{padBank}</div>;
   }
 }
 

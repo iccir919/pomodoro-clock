@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import style from "./style.css";
 
 class DrumPad extends Component {
   constructor(props) {
@@ -7,7 +6,7 @@ class DrumPad extends Component {
   }
 
   render() {
-    return <div className={style.drumPad}>{this.props.keyTrigger}</div>;
+    return <div>{this.props.keyTrigger}</div>;
   }
 }
 
