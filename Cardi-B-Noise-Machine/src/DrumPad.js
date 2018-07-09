@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 
 const activeStyle = {
-  backgroundColor: "orange",
-  boxShadow: "0 3px orange",
+  backgroundColor: "yellow",
+  boxShadow: "0 3px grey",
   height: 77,
   marginTop: 13
 };
 
 const inactiveStyle = {
-  backgroundColor: "grey",
   marginTop: 10,
-  boxShadow: "3px 3px 5px black"
+  boxShadow: "3px 3px 5px black",
+  backgroundColor: "gray"
 };
 
 class DrumPad extends React.Component {
@@ -25,7 +25,7 @@ class DrumPad extends React.Component {
   }
 
   activatePad() {
-    this.state.padStyle.backgroundColor === "orange"
+    this.state.padStyle.backgroundColor === "yellow"
       ? this.setState({
           padStyle: inactiveStyle
         })
@@ -56,12 +56,19 @@ class DrumPad extends React.Component {
   }
 
   render() {
+    const style = {
+      background: `url(../assets/images/${
+        this.props.backgroundImage
+      }.png) no-repeat`,
+      backgroundSize: "120%"
+    };
+    Object.assign(style, this.state.padStyle);
     return (
       <div
         id={this.props.clipId}
         onClick={this.playSound}
         className="drum-pad"
-        style={this.state.padStyle}
+        style={style}
       >
         <audio
           className="clip"

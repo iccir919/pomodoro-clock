@@ -7,55 +7,64 @@ const bank = [
     keyCode: 81,
     keyTrigger: "Q",
     id: "Mmm-hmm",
-    url: "../audio/clip0.mp3"
+    url: "../assets/audio/clip0.mp3",
+    backgroundImage: "face0"
   },
   {
     keyCode: 87,
     keyTrigger: "W",
     id: "Some-things",
-    url: "../audio/clip1.mp3"
+    url: "../assets/audio/clip1.mp3",
+    backgroundImage: "face1"
   },
   {
     keyCode: 69,
     keyTrigger: "E",
     id: "He-ha-ha",
-    url: "../audio/clip2.mp3"
+    url: "../assets/audio/clip2.mp3",
+    backgroundImage: "face2"
   },
   {
     keyCode: 65,
     keyTrigger: "A",
     id: "Meh-ha",
-    url: "../audio/clip3.mp3"
+    url: "../assets/audio/clip3.mp3",
+    backgroundImage: "face3"
   },
   {
     keyCode: 83,
     keyTrigger: "S",
     id: "Ba-ba-ba",
-    url: "../audio/clip4.mp3"
+    url: "../assets/audio/clip4.mp3",
+    backgroundImage: "face4"
   },
   {
     keyCode: 68,
     keyTrigger: "D",
     id: "Yknow-what",
-    url: "../audio/clip5.mp3"
+    url: "../assets/audio/clip5.mp3",
+    backgroundImage: "face5"
   },
   {
     keyCode: 90,
     keyTrigger: "Z",
     id: "Hoo-yea",
-    url: "../audio/clip6.mp3"
+    url: "../assets/audio/clip6.mp3",
+    backgroundImage: "face6"
   },
   {
     keyCode: 88,
     keyTrigger: "X",
     id: "Hey",
-    url: "../audio/clip7.mp3"
+    url: "../assets/audio/clip7.mp3",
+    backgroundImage: "face7"
   },
   {
     keyCode: 67,
     keyTrigger: "C",
     id: "Show-it",
-    url: "../audio/clip8.mp3"
+    url: "../assets/audio/clip8.mp3",
+    backgroundImage: "face8"
   }
 ];
 

@@ -8,13 +8,13 @@ class PadBank extends React.Component {
 
   render() {
     let padBank = this.props.currentPadBank.map((drumObj, i, padBankArr) => {
-      console.log(padBankArr[i]);
       return (
         <DrumPad
           clipId={padBankArr[i].id}
           clip={padBankArr[i].url}
           keyTrigger={padBankArr[i].keyTrigger}
           keyCode={padBankArr[i].keyCode}
+          backgroundImage={padBankArr[i].backgroundImage}
         />
       );
     });
