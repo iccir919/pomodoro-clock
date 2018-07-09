@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 const activeStyle = {
-  backgroundColor: "yellow",
   boxShadow: "0 3px grey",
   height: 77,
   marginTop: 13
@@ -9,8 +8,7 @@ const activeStyle = {
 
 const inactiveStyle = {
   marginTop: 10,
-  boxShadow: "3px 3px 5px black",
-  backgroundColor: "gray"
+  boxShadow: "3px 3px 5px black"
 };
 
 class DrumPad extends React.Component {
@@ -25,7 +23,7 @@ class DrumPad extends React.Component {
   }
 
   activatePad() {
-    this.state.padStyle.backgroundColor === "yellow"
+    this.state.padStyle.marginTop === 13
       ? this.setState({
           padStyle: inactiveStyle
         })
@@ -52,6 +50,7 @@ class DrumPad extends React.Component {
     sound.currentTime = 0;
     sound.play();
     this.activatePad();
+    this.props.updateDisplay(this.props.clipId.replace(/-/g, " "));
     setTimeout(() => this.activatePad(), 100);
   }
 

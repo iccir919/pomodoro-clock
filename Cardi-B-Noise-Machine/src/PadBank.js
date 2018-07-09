@@ -10,10 +10,12 @@ class PadBank extends React.Component {
     let padBank = this.props.currentPadBank.map((drumObj, i, padBankArr) => {
       return (
         <DrumPad
+          key={padBankArr[i].id}
           clipId={padBankArr[i].id}
           clip={padBankArr[i].url}
           keyTrigger={padBankArr[i].keyTrigger}
           keyCode={padBankArr[i].keyCode}
+          updateDisplay={this.props.updateDisplay}
           backgroundImage={padBankArr[i].backgroundImage}
         />
       );

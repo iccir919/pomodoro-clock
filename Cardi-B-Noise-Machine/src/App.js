@@ -72,16 +72,37 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPadBank: bank
+      currentPadBank: bank,
+      display: String.fromCharCode(160)
     };
+    this.clearDisplay = this.clearDisplay.bind(this);
+    this.displayClipName = this.displayClipName.bind(this);
+  }
+
+  displayClipName(name) {
+    this.setState({
+      display: name
+    });
+  }
+
+  clearDisplay() {
+    this.setState({
+      display: String.fromCharCode(160)
+    });
   }
 
   render() {
     return (
       <div id="drum-machine" className="inner-container">
-        <PadBank currentPadBank={this.state.currentPadBank} />
-        <div className="logo">
-          <div className="inner-logo ">{"Cardi B Noise Machine"}</div>
+        <PadBank
+          updateDisplay={this.displayClipName}
+          currentPadBank={this.state.currentPadBank}
+        />
+        <div className="controls-container">
+          <div className="logo">
+            <div className="inner-logo ">{"CARDI B NOISE MACHINE"}</div>
+          </div>
+          <p id="display">{this.state.display}</p>
         </div>
       </div>
     );
