@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  vertical-align: baseline;
 }
 
 div {
@@ -16,11 +15,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 #wrapper {
   padding: 15px;
+  width: 425px;
 }
 
 @font-face {
@@ -29,9 +29,8 @@ body {
 }
 
 header {
-  padding: 20px 50px 10px 50px;
+  padding: 10px;
   position: relative;
-  width: 425px;
   height: auto;
   clear: both;
   text-align: center;
@@ -45,7 +44,6 @@ header {
 }
 
 #date {
-  height: auto;
   clear: both;
   font-weight: 500;
   font-size: 1em;
@@ -53,62 +51,38 @@ header {
 
 #quote-box {
   position: relative;
-  width: 425px;
-  padding: 20px 50px 40px 50px;
   display: table;
-  background-color: #fff;
+  text-align: center;
+  width: 100%;
 }
 
 #quote-source {
   text-decoration: none;
+  color: black;
 }
 
 .quote-image {
-  width: 425px;
-  height: auto;
+  margin: auto;
   clear: both;
   padding: 15px;
 }
 
 #image {
-  max-width: 150%;
   display: block;
-  height: auto;
   margin: auto;
-}
-
-.quote-text {
-  text-align: center;
-  width: 425px;
-  height: auto;
-  clear: both;
 }
 
 #text {
   font-weight: 450;
   font-size: 1.5em;
-  color: black;
-}
-
-#subtext {
-  font-weight: 350;
-  font-size: 1em;
-  color: black;
 }
 
 .quote-author {
-  width: 425px;
-  height: auto;
-  clear: both;
   padding-top: 20px;
-  font-size: 1em;
-  text-align: center;
   color: grey;
 }
 
 .buttons {
-  width: 425px;
-  margin: auto;
   display: block;
   border-top: 2px solid rgb(80, 80, 80);
   margin-top: 10px;
