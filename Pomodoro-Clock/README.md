@@ -2,7 +2,7 @@
 
 ## Resources
 
-- [This](https://hackernoon.com/how-to-build-a-react-project-from-scratch-using-webpack-4-and-babel-56d4a26afd32) is the Hacker Noon article I used to start this project. It walked me through the set up of:
+[This](https://hackernoon.com/how-to-build-a-react-project-from-scratch-using-webpack-4-and-babel-56d4a26afd32) is the Hacker Noon article I used to start this project. It walked me through the set up of:
 
 - Folder structure
 - Webpack
