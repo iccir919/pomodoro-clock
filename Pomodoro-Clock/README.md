@@ -12,6 +12,8 @@
 - React
 - Babel
 
+UI Framework provided by [Material UI](https://material-ui.com/), the world's most popular React UI framework
+
 ## Requirements
 
 - [ ] I can see an element with id="break-label" that contains a string (e.g. "Break Length").
