@@ -23,10 +23,12 @@ class App extends React.Component {
   state = {
     brkLength: 5,
     seshLength: 25,
-    timerState: "stopped",
+    isRunning: false,
     timerType: "Session",
     time: 1500,
-    maxTime: this.getMaxTime()
+    maxTime: () => {
+      this.getMaxTime();
+    }
   };
 
   getMaxTime = () => {
@@ -37,14 +39,6 @@ class App extends React.Component {
     }
   };
 
-  timerControl = () => {
-    let control =
-      this.state.timerState == "stopped"
-        ? (this.beginCountDown(), this.setState({ timerState: "running" }))
-        : (this.setState({ timerState: "stopped" }),
-          this.state.intervalID && this.state.intervalID.cancel());
-  };
-
   setBrkLength = action => {
     this.lengthControl("brkLength", action, this.state.brkLength, "Session");
   };
@@ -53,21 +47,21 @@ class App extends React.Component {
     this.lengthControl("seshLength", action, this.state.seshLength, "Break");
   };
 
-  lengthControl = (stateToChange, sign, currentLength, timerType) => {
-    if (this.state.timerState == "running") return;
+  lengthControl = (stateToChange, action, currentLength, timerType) => {
+    if (this.state.isRunning) return;
     if (this.state.timerType == timerType) {
-      if (sign == "-" && currentLength != 1) {
+      if (action == "remove" && currentLength != 1) {
         this.setState({ [stateToChange]: currentLength - 1 });
-      } else if (sign == "+" && currentLength != 60) {
+      } else if (action == "add" && currentLength != 60) {
         this.setState({ [stateToChange]: currentLength + 1 });
       }
     } else {
-      if (sign == "-" && currentLength != 1) {
+      if (action == "remove" && currentLength != 1) {
         this.setState({
           [stateToChange]: currentLength - 1,
           timer: currentLength * 60 - 60
         });
-      } else if (sign == "+" && currentLength != 60) {
+      } else if (action == "add" && currentLength != 60) {
         this.setState({
           [stateToChange]: currentLength + 1,
           timer: currentLength * 60 + 60
@@ -76,9 +70,36 @@ class App extends React.Component {
     }
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.isRunning) {
+      if (!this.timer) this.timer = this.startTimer();
+    } else {
+      window.clearInterval(this.timer);
+      this.timer = null;
+    }
+  }
+
+  startTimer = () => {
+    let _this = this;
+    return window.setInterval(function() {
+      if (_this.state.time > 0) {
+        _this.setState({
+          time: _this.state.time - 1
+        });
+      } else {
+        _this.timeOver();
+      }
+    }, 1000);
+  };
+
+  handleStart = () => {
+    this.setState({
+      isRunning: !this.state.isRunning
+    });
+  };
+
   render() {
     const { classes } = this.props;
-
     return (
       <Grid container className={classes.root}>
         <Grid item xs={12}>
@@ -108,7 +129,10 @@ class App extends React.Component {
           <Clock />
         </Grid>
         <Grid item xs={12}>
-          <FloatingActionButtons time={this.state.time} />
+          <FloatingActionButtons
+            handleStart={this.handleStart}
+            time={this.state.time}
+          />
         </Grid>
       </Grid>
     );

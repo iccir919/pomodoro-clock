@@ -11,16 +11,6 @@ const styles = theme => ({
 });
 
 class Clock extends React.Component {
-  getTime = () => {
-    return moment.utc(this.props.time).format("mm.ss");
-  };
-
-  getPercent = () => {
-    return (
-      100 - ((this.props.maxtime - this.props.time) / this.props.maxtime) * 100
-    );
-  };
-
   render() {
     const { classes } = this.props;
     return (

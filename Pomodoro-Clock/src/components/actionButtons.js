@@ -18,7 +18,7 @@ const styles = theme => ({
 });
 
 function FloatingActionButtons(props) {
-  const { classes } = props;
+  const { classes, handleStart } = props;
   return (
     <div>
       <Button
@@ -26,6 +26,7 @@ function FloatingActionButtons(props) {
         color="primary"
         aria-label="Add"
         className={classes.button}
+        onClick={handleStart}
       >
         <Icon>play_arrow</Icon>
       </Button>
