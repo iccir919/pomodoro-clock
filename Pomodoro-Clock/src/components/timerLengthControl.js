@@ -17,42 +17,40 @@ const styles = theme => ({
   }
 });
 
-function TimerLengthControlCard(props) {
+function TimerLengthControl(props) {
   const { classes, title, length, clickHandler } = props;
 
   return (
     <div>
-      <Card>
-        <div>
-          <Typography variant="headline">{title}</Typography>
-        </div>
-        <div className={classes.controls}>
-          <IconButton
-            onClick={() => {
-              clickHandler("remove");
-            }}
-            aria-label="Remove"
-          >
-            <Icon color="secondary">remove</Icon>
-          </IconButton>
-          <Typography variant="title">{length} min.</Typography>
-          <IconButton
-            onClick={() => {
-              clickHandler("add");
-            }}
-            aria-label="Add"
-          >
-            <Icon color="primary">add</Icon>
-          </IconButton>
-        </div>
-      </Card>
+      <div>
+        <Typography variant="headline">{title}</Typography>
+      </div>
+      <div className={classes.controls}>
+        <IconButton
+          onClick={() => {
+            clickHandler("remove");
+          }}
+          aria-label="Remove"
+        >
+          <Icon color="secondary">remove</Icon>
+        </IconButton>
+        <Typography variant="title">{length} min.</Typography>
+        <IconButton
+          onClick={() => {
+            clickHandler("add");
+          }}
+          aria-label="Add"
+        >
+          <Icon color="primary">add</Icon>
+        </IconButton>
+      </div>
     </div>
   );
 }
 
-TimerLengthControlCard.propTypes = {
+TimerLengthControl.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(TimerLengthControlCard);
+export default withStyles(styles, { withTheme: true })(TimerLengthControl);
