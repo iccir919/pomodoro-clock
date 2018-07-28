@@ -25,7 +25,24 @@ class App extends React.Component {
     seshLength: 25,
     timerState: "stopped",
     timerType: "Session",
-    timer: 1500
+    time: 1500,
+    maxTime: this.getMaxTime()
+  };
+
+  getMaxTime = () => {
+    if (this.state.timerType === "Session") {
+      return this.state.seshLength * 60;
+    } else {
+      return this.state.brkLength * 60;
+    }
+  };
+
+  timerControl = () => {
+    let control =
+      this.state.timerState == "stopped"
+        ? (this.beginCountDown(), this.setState({ timerState: "running" }))
+        : (this.setState({ timerState: "stopped" }),
+          this.state.intervalID && this.state.intervalID.cancel());
   };
 
   setBrkLength = action => {
@@ -39,18 +56,18 @@ class App extends React.Component {
   lengthControl = (stateToChange, sign, currentLength, timerType) => {
     if (this.state.timerState == "running") return;
     if (this.state.timerType == timerType) {
-      if (sign == "remove" && currentLength != 1) {
+      if (sign == "-" && currentLength != 1) {
         this.setState({ [stateToChange]: currentLength - 1 });
-      } else if (sign == "add" && currentLength != 60) {
+      } else if (sign == "+" && currentLength != 60) {
         this.setState({ [stateToChange]: currentLength + 1 });
       }
     } else {
-      if (sign == "remove" && currentLength != 1) {
+      if (sign == "-" && currentLength != 1) {
         this.setState({
           [stateToChange]: currentLength - 1,
           timer: currentLength * 60 - 60
         });
-      } else if (sign == "add" && currentLength != 60) {
+      } else if (sign == "+" && currentLength != 60) {
         this.setState({
           [stateToChange]: currentLength + 1,
           timer: currentLength * 60 + 60
@@ -91,7 +108,7 @@ class App extends React.Component {
           <Clock />
         </Grid>
         <Grid item xs={12}>
-          <FloatingActionButtons />
+          <FloatingActionButtons time={this.state.time} />
         </Grid>
       </Grid>
     );
