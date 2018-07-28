@@ -24,20 +24,76 @@ class App extends React.Component {
     brkLength: 5,
     seshLength: 25,
     isRunning: false,
+    isBreak: false,
     timerType: "Session",
-    time: 1500,
-    maxTime: () => {
-      this.getMaxTime();
+    time: 25 * 60,
+    maxTime: 25 * 60
+  };
+
+  getMaxTime = isBreak => {
+    if (isBreak) {
+      return this.state.brkLength * 60;
+    } else {
+      return this.state.seshLength * 60;
     }
   };
 
-  getMaxTime = () => {
-    if (this.state.timerType === "Session") {
-      return this.state.seshLength * 60;
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.isRunning) {
+      if (!this.timer) this.timer = this.startTimer();
     } else {
-      return this.state.brkLength * 60;
+      window.clearInterval(this.timer);
+      this.timer = null;
     }
+  }
+
+  handleStart = () => {
+    this.setState({
+      isRunning: !this.state.isRunning
+    });
   };
+
+  startTimer = () => {
+    let _this = this;
+    return window.setInterval(function() {
+      if (_this.state.time > 0) {
+        console.log(_this.state.time);
+        _this.setState({
+          time: _this.state.time - 1
+        });
+      } else {
+        _this.timeOver();
+      }
+    }, 1000);
+  };
+
+  timeOver = () => {
+    this.setState({
+      isBreak: !this.state.isBreak,
+      maxTime: this.getMaxTime(!this.state.isBreak),
+      time: this.getMaxTime(!this.state.isBreak)
+    });
+  };
+
+  handleBreak = () => {
+    this.setState({
+      isBreak: !this.state.isBreak,
+      maxTime: this.getMaxTime(!this.state.isBreak),
+      time: this.getMaxTime(!this.state.isBreak)
+    });
+  };
+
+  handleReset = () => {
+    this.setState({
+      time: this.state.maxTime,
+      isPlaying: false
+    });
+  };
+
+  componentWillUnmount() {
+    window.clearInterval(this.timer);
+    this.timer = null;
+  }
 
   setBrkLength = action => {
     this.lengthControl("brkLength", action, this.state.brkLength, "Session");
@@ -70,32 +126,12 @@ class App extends React.Component {
     }
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  getIconName = () => {
     if (this.state.isRunning) {
-      if (!this.timer) this.timer = this.startTimer();
+      return "pause";
     } else {
-      window.clearInterval(this.timer);
-      this.timer = null;
+      return "play_arrow";
     }
-  }
-
-  startTimer = () => {
-    let _this = this;
-    return window.setInterval(function() {
-      if (_this.state.time > 0) {
-        _this.setState({
-          time: _this.state.time - 1
-        });
-      } else {
-        _this.timeOver();
-      }
-    }, 1000);
-  };
-
-  handleStart = () => {
-    this.setState({
-      isRunning: !this.state.isRunning
-    });
   };
 
   render() {
@@ -130,7 +166,9 @@ class App extends React.Component {
         </Grid>
         <Grid item xs={12}>
           <FloatingActionButtons
+            getIconName={this.getIconName}
             handleStart={this.handleStart}
+            handleReset={this.handleReset}
             time={this.state.time}
           />
         </Grid>
