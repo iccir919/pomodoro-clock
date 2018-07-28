@@ -1,16 +1,43 @@
-function Comment(props) {
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
+import Icon from "@material-ui/core/Icon";
+import DeleteIcon from "@material-ui/icons/Delete";
+import NavigationIcon from "@material-ui/icons/Navigation";
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit
+  }
+});
+
+function FloatingActionButtons(props) {
+  const { classes } = props;
   return (
-    <div className="Comment">
-      <div className="UserInfo">
-        <img
-          className="Avatar"
-          src={props.author.avatarUrl}
-          alt={props.author.name}
-        />
-        <div className="UserInfo-name">{props.author.name}</div>
-      </div>
-      <div className="Comment-text">{props.text}</div>
-      <div className="Comment-date">{formatDate(props.date)}</div>
+    <div>
+      <Button
+        variant="fab"
+        color="primary"
+        aria-label="Add"
+        className={classes.button}
+      >
+        <Icon>play_arrow</Icon>
+      </Button>
+      <Button variant="fab" aria-label="Edit" className={classes.button}>
+        <Icon>refresh</Icon>
+      </Button>
     </div>
   );
 }
+
+FloatingActionButtons.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(FloatingActionButtons);

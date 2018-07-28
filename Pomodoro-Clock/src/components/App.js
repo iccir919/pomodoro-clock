@@ -9,12 +9,7 @@ import Grid from "@material-ui/core/Grid";
 
 import TimerLengthControl from "./timerLengthControl";
 import Clock from "./clock";
-
-import Button from "@material-ui/core/Button";
-import AddIcon from "@material-ui/icons/Add";
-import Icon from "@material-ui/core/Icon";
-import DeleteIcon from "@material-ui/icons/Delete";
-import NavigationIcon from "@material-ui/icons/Navigation";
+import FloatingActionButtons from "./actionButtons";
 
 const styles = theme => ({
   root: {
@@ -91,9 +86,12 @@ class App extends React.Component {
               />
             </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <Clock />
-          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Clock />
+        </Grid>
+        <Grid item xs={12}>
+          <FloatingActionButtons />
         </Grid>
       </Grid>
     );
