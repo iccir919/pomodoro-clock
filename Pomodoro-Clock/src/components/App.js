@@ -20,7 +20,40 @@ const styles = theme => ({
 class App extends React.Component {
   state = {
     brkLength: 5,
-    seshLength: 25
+    seshLength: 25,
+    timerState: "stopped",
+    timerType: "Session"
+  };
+
+  setBrkLength = action => {
+    this.lengthControl("brkLength", action, this.state.brkLength, "Session");
+  };
+
+  setSeshLength = action => {
+    this.lengthControl("seshLength", action, this.state.seshLength, "Break");
+  };
+
+  lengthControl = (stateToChange, sign, currentLength, timerType) => {
+    if (this.state.timerState == "running") return;
+    if (this.state.timerType == timerType) {
+      if (sign == "remove" && currentLength != 1) {
+        this.setState({ [stateToChange]: currentLength - 1 });
+      } else if (sign == "add" && currentLength != 60) {
+        this.setState({ [stateToChange]: currentLength + 1 });
+      }
+    } else {
+      if (sign == "remove" && currentLength != 1) {
+        this.setState({
+          [stateToChange]: currentLength - 1,
+          timer: currentLength * 60 - 60
+        });
+      } else if (sign == "add" && currentLength != 60) {
+        this.setState({
+          [stateToChange]: currentLength + 1,
+          timer: currentLength * 60 + 60
+        });
+      }
+    }
   };
 
   render() {
@@ -34,12 +67,20 @@ class App extends React.Component {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Grid container justify={"center"} direction={"row"} spacing={16}>
+          <Grid container justify={"center"} direction={"row"} spacing={24}>
             <Grid item>
-              <TimerLengthControl title="Break Length" />
+              <TimerLengthControl
+                length={this.state.brkLength}
+                title="Break Length"
+                clickHandler={this.setBrkLength}
+              />
             </Grid>
             <Grid item>
-              <TimerLengthControl title="Work Length" />
+              <TimerLengthControl
+                length={this.state.seshLength}
+                title="Work Length"
+                clickHandler={this.setSeshLength}
+              />
             </Grid>
           </Grid>
         </Grid>
