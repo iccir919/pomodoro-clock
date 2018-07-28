@@ -13,7 +13,7 @@ const styles = theme => ({
 
 class Clock extends React.Component {
   getTime = () => {
-    return moment.utc(this.props.time * 1000).format("mm.ss");
+    return moment.utc(this.props.time * 1000).format("mm:ss");
   };
 
   getPercent = () => {
@@ -33,10 +33,10 @@ class Clock extends React.Component {
             size={"16rem"}
           />
         </div>
-        <Typography variant="display2" gutterBottom>
+        <Typography id="time-left" variant="display2" gutterBottom>
           {this.getTime()}
         </Typography>
-        <Typography variant="headline" gutterBottom>
+        <Typography id="timer-label" variant="headline" gutterBottom>
           {timerType}
         </Typography>
       </div>

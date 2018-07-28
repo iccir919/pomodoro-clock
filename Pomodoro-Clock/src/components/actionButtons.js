@@ -30,16 +30,18 @@ function FloatingActionButtons(props) {
     <div>
       <Button
         variant="fab"
-        aria-label="Add"
+        id="start_stop"
+        aria-label="Start/pause"
         className={classes.button}
         onClick={handleStart}
       >
         <Icon>{getIconName()}</Icon>
       </Button>
       <Button
+        id="reset"
         onClick={handleReset}
         variant="fab"
-        aria-label="Edit"
+        aria-label="Reset"
         className={classes.button}
       >
         <Icon>refresh</Icon>

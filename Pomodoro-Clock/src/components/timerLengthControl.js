@@ -11,13 +11,21 @@ const styles = theme => ({
   controls: {
     display: "flex",
     alignItems: "center",
-    justify: "center",
-    paddingBottom: theme.spacing.unit
+    justifyContent: "center"
   }
 });
 
 function TimerLengthControl(props) {
-  const { classes, title, length, clickHandler, titleID } = props;
+  const {
+    classes,
+    title,
+    length,
+    clickHandler,
+    titleID,
+    minID,
+    addID,
+    lengthID
+  } = props;
 
   return (
     <div>
@@ -28,6 +36,7 @@ function TimerLengthControl(props) {
       </div>
       <div className={classes.controls}>
         <IconButton
+          id={minID}
           onClick={() => {
             clickHandler("remove");
           }}
@@ -35,8 +44,11 @@ function TimerLengthControl(props) {
         >
           <Icon>remove</Icon>
         </IconButton>
-        <Typography variant="title">{length} min.</Typography>
+        <Typography id={lengthID} variant="title">
+          {length}
+        </Typography>
         <IconButton
+          id={addID}
           onClick={() => {
             clickHandler("add");
           }}

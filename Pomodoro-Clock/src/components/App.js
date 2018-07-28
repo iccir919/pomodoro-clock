@@ -87,8 +87,13 @@ class App extends React.Component {
 
   handleReset = () => {
     this.setState({
-      time: this.state.maxTime,
-      isPlaying: false
+      brkLength: 5,
+      seshLength: 25,
+      isRunning: false,
+      isBreak: false,
+      timerType: "Session",
+      time: 25 * 60,
+      maxTime: 25 * 60
     });
   };
 
@@ -160,6 +165,9 @@ class App extends React.Component {
             <Grid item>
               <TimerLengthControl
                 titleID="break-label"
+                minID="break-decrement"
+                addID="break-increment"
+                lengthID="break-length"
                 length={this.state.brkLength}
                 title="Break Length"
                 clickHandler={this.setBrkLength}
@@ -168,6 +176,9 @@ class App extends React.Component {
             <Grid item>
               <TimerLengthControl
                 titleID="session-label"
+                minID="session-decrement"
+                addID="session-increment"
+                lengthID="session-length"
                 length={this.state.seshLength}
                 title="Session Length"
                 clickHandler={this.setSeshLength}
