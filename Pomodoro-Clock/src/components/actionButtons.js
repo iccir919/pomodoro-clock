@@ -18,12 +18,18 @@ const styles = theme => ({
 });
 
 function FloatingActionButtons(props) {
-  const { classes, handleStart, getIconName, handleReset } = props;
+  const {
+    classes,
+    handleStart,
+    getIconName,
+    handleReset,
+    getTypeIconName,
+    handleBreak
+  } = props;
   return (
     <div>
       <Button
         variant="fab"
-        color="primary"
         aria-label="Add"
         className={classes.button}
         onClick={handleStart}
@@ -37,6 +43,14 @@ function FloatingActionButtons(props) {
         className={classes.button}
       >
         <Icon>refresh</Icon>
+      </Button>
+      <Button
+        onClick={handleBreak}
+        variant="fab"
+        aria-label="Edit"
+        className={classes.button}
+      >
+        <Icon>{getTypeIconName()}</Icon>
       </Button>
     </div>
   );

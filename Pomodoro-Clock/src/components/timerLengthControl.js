@@ -31,7 +31,7 @@ function TimerLengthControl(props) {
           }}
           aria-label="Remove"
         >
-          <Icon color="secondary">remove</Icon>
+          <Icon>remove</Icon>
         </IconButton>
         <Typography variant="title">{length} min.</Typography>
         <IconButton
@@ -40,7 +40,7 @@ function TimerLengthControl(props) {
           }}
           aria-label="Add"
         >
-          <Icon color="primary">add</Icon>
+          <Icon>add</Icon>
         </IconButton>
       </div>
     </div>

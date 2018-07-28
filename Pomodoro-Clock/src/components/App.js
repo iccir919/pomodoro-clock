@@ -71,7 +71,8 @@ class App extends React.Component {
     this.setState({
       isBreak: !this.state.isBreak,
       maxTime: this.getMaxTime(!this.state.isBreak),
-      time: this.getMaxTime(!this.state.isBreak)
+      time: this.getMaxTime(!this.state.isBreak),
+      timerType: this.state.isBreak ? "Session" : "Break"
     });
   };
 
@@ -79,7 +80,8 @@ class App extends React.Component {
     this.setState({
       isBreak: !this.state.isBreak,
       maxTime: this.getMaxTime(!this.state.isBreak),
-      time: this.getMaxTime(!this.state.isBreak)
+      time: this.getMaxTime(!this.state.isBreak),
+      timerType: this.state.isBreak ? "Session" : "Break"
     });
   };
 
@@ -115,12 +117,14 @@ class App extends React.Component {
       if (action == "remove" && currentLength != 1) {
         this.setState({
           [stateToChange]: currentLength - 1,
-          timer: currentLength * 60 - 60
+          time: currentLength * 60 - 60,
+          maxTime: currentLength * 60 - 60
         });
       } else if (action == "add" && currentLength != 60) {
         this.setState({
           [stateToChange]: currentLength + 1,
-          timer: currentLength * 60 + 60
+          time: currentLength * 60 + 60,
+          maxTime: currentLength * 60 + 60
         });
       }
     }
@@ -134,12 +138,20 @@ class App extends React.Component {
     }
   };
 
+  getTypeIconName = () => {
+    if (this.state.isBreak) {
+      return "work";
+    } else {
+      return "work_off";
+    }
+  };
+
   render() {
     const { classes } = this.props;
     return (
       <Grid container className={classes.root}>
         <Grid item xs={12}>
-          <Typography variant="display1" gutterBottom>
+          <Typography variant="display2" gutterBottom>
             Pomodoro Clock
           </Typography>
         </Grid>
@@ -162,7 +174,11 @@ class App extends React.Component {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <Clock />
+          <Clock
+            timerType={this.state.timerType}
+            time={this.state.time}
+            maxTime={this.state.maxTime}
+          />
         </Grid>
         <Grid item xs={12}>
           <FloatingActionButtons
@@ -170,6 +186,8 @@ class App extends React.Component {
             handleStart={this.handleStart}
             handleReset={this.handleReset}
             time={this.state.time}
+            handleBreak={this.handleBreak}
+            getTypeIconName={this.getTypeIconName}
           />
         </Grid>
       </Grid>
