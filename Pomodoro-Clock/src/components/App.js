@@ -159,6 +159,7 @@ class App extends React.Component {
           <Grid container justify={"center"} direction={"row"} spacing={24}>
             <Grid item>
               <TimerLengthControl
+                titleID="break-label"
                 length={this.state.brkLength}
                 title="Break Length"
                 clickHandler={this.setBrkLength}
@@ -166,8 +167,9 @@ class App extends React.Component {
             </Grid>
             <Grid item>
               <TimerLengthControl
+                titleID="session-label"
                 length={this.state.seshLength}
-                title="Work Length"
+                title="Session Length"
                 clickHandler={this.setSeshLength}
               />
             </Grid>

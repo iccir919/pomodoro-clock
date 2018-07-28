@@ -17,12 +17,14 @@ const styles = theme => ({
 });
 
 function TimerLengthControl(props) {
-  const { classes, title, length, clickHandler } = props;
+  const { classes, title, length, clickHandler, titleID } = props;
 
   return (
     <div>
       <div>
-        <Typography variant="headline">{title}</Typography>
+        <Typography id={titleID} variant="headline">
+          {title}
+        </Typography>
       </div>
       <div className={classes.controls}>
         <IconButton
