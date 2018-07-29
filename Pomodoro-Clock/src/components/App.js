@@ -40,6 +40,7 @@ class App extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.isRunning) {
+      this.buzzer(this.state.time);
       if (!this.timer) this.timer = this.startTimer();
     } else {
       window.clearInterval(this.timer);
@@ -95,6 +96,14 @@ class App extends React.Component {
       time: 25 * 60,
       maxTime: 25 * 60
     });
+    this.audioBeep.pause();
+    this.audioBeep.currentTime = 0;
+  };
+
+  buzzer = time => {
+    if (time === 0) {
+      this.audioBeep.play();
+    }
   };
 
   componentWillUnmount() {
@@ -154,56 +163,66 @@ class App extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container className={classes.root}>
-        <Grid item xs={12}>
-          <Typography variant="display2" gutterBottom>
-            Pomodoro Clock
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container justify={"center"} direction={"row"} spacing={24}>
-            <Grid item>
-              <TimerLengthControl
-                titleID="break-label"
-                minID="break-decrement"
-                addID="break-increment"
-                lengthID="break-length"
-                length={this.state.brkLength}
-                title="Break Length"
-                clickHandler={this.setBrkLength}
-              />
-            </Grid>
-            <Grid item>
-              <TimerLengthControl
-                titleID="session-label"
-                minID="session-decrement"
-                addID="session-increment"
-                lengthID="session-length"
-                length={this.state.seshLength}
-                title="Session Length"
-                clickHandler={this.setSeshLength}
-              />
+      <div>
+        <Grid container className={classes.root}>
+          <Grid item xs={12}>
+            <Typography variant="display2" gutterBottom>
+              Pomodoro Clock
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify={"center"} direction={"row"} spacing={24}>
+              <Grid item>
+                <TimerLengthControl
+                  titleID="break-label"
+                  minID="break-decrement"
+                  addID="break-increment"
+                  lengthID="break-length"
+                  length={this.state.brkLength}
+                  title="Break Length"
+                  clickHandler={this.setBrkLength}
+                />
+              </Grid>
+              <Grid item>
+                <TimerLengthControl
+                  titleID="session-label"
+                  minID="session-decrement"
+                  addID="session-increment"
+                  lengthID="session-length"
+                  length={this.state.seshLength}
+                  title="Session Length"
+                  clickHandler={this.setSeshLength}
+                />
+              </Grid>
             </Grid>
           </Grid>
+          <Grid item xs={12}>
+            <Clock
+              timerType={this.state.timerType}
+              time={this.state.time}
+              maxTime={this.state.maxTime}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <FloatingActionButtons
+              getIconName={this.getIconName}
+              handleStart={this.handleStart}
+              handleReset={this.handleReset}
+              time={this.state.time}
+              handleBreak={this.handleBreak}
+              getTypeIconName={this.getTypeIconName}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Clock
-            timerType={this.state.timerType}
-            time={this.state.time}
-            maxTime={this.state.maxTime}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FloatingActionButtons
-            getIconName={this.getIconName}
-            handleStart={this.handleStart}
-            handleReset={this.handleReset}
-            time={this.state.time}
-            handleBreak={this.handleBreak}
-            getTypeIconName={this.getTypeIconName}
-          />
-        </Grid>
-      </Grid>
+        <audio
+          id="beep"
+          preload="auto"
+          src="https://goo.gl/65cBl1"
+          ref={audio => {
+            this.audioBeep = audio;
+          }}
+        />
+      </div>
     );
   }
 }
