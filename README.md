@@ -14,7 +14,7 @@
 - [ ] Build a Markdown Previewer
 - [x] [Build a Drum Machine](#build-a-drum-machine)
 - [ ] Build a JavaScript Calculator
-- [ ] [Build a Pomodoro Clock](#build-a-pomodoro-clock)
+- [x] [Build a Pomodoro Clock](#build-a-pomodoro-clock)
 
 ### Build a Random Quote Machine
 
@@ -33,6 +33,7 @@
 ### Build a Pomodoro Clock
 
 [Pomodoro Clock](https://github.com/iccir919/FCC-Frontend-Libraries-Projects/tree/master/Pomodoro-Clock)
+![alt text](https://github.com/iccir919/FCC-Frontend-Libraries-Projects/blob/master/README-images/pomodoro-clock.png "Pomodoro Clock screenshot")
 
 ## About freeCodeCamp
 
