@@ -41,6 +41,7 @@ function TimerLengthControl(props) {
             clickHandler("remove");
           }}
           aria-label="Remove"
+          color="secondary"
         >
           <Icon>remove</Icon>
         </IconButton>
@@ -53,6 +54,7 @@ function TimerLengthControl(props) {
             clickHandler("add");
           }}
           aria-label="Add"
+          color="secondary"
         >
           <Icon>add</Icon>
         </IconButton>
