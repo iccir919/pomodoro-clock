@@ -1,7 +1,9 @@
 import React from "react";
+
 import LengthInput from "./LengthInput";
 import Time from "./Time";
 
+import alarm from "./alarm.mp3";
 import "./App.css";
 
 class App extends React.Component {
@@ -15,6 +17,7 @@ class App extends React.Component {
       timerType: "session",
       timerId: ""
     };
+    this.audio = React.createRef();
   }
 
   changeTimerState() {
@@ -74,6 +77,7 @@ class App extends React.Component {
         timerTime: newTime
       });
     } else {
+      this.audio.current.play();
       clearInterval(this.state.timerId);
       if (this.state.timerType === "session") {
         this.setState(state => {
@@ -99,6 +103,8 @@ class App extends React.Component {
 
   reset() {
     clearInterval(this.state.timerId);
+    this.audio.current.pause();
+    this.audio.current.currentTime = 0;
     this.setState({
       breakLength: 5,
       sessionLength: 25,
@@ -130,6 +136,10 @@ class App extends React.Component {
         <button id="reset" onClick={this.reset.bind(this)}>
           reset
         </button>
+        <audio ref={this.audio} id="beep">
+          <source src={alarm} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
       </div>
     );
   }
