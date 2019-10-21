@@ -10,9 +10,10 @@ class App extends React.Component {
     this.state = {
       breakLength: 5,
       sessionLength: 25,
-      time: 25 * 60,
+      timerTime: 25 * 60,
       timerState: "paused",
-      timerType: "session"
+      timerType: "session",
+      timerId: ""
     };
   }
 
@@ -21,10 +22,12 @@ class App extends React.Component {
       this.setState({
         timerState: "playing"
       });
+      this.startTimer();
     } else {
       this.setState({
         timerState: "paused"
       });
+      clearInterval(this.state.timerId);
     }
   }
 
@@ -42,7 +45,7 @@ class App extends React.Component {
         this.setState(state => {
           return {
             sessionLength: state.sessionLength + 1,
-            time: state.time + 60
+            timerTime: state.timerTime + 60
           };
         });
       }
@@ -57,20 +60,52 @@ class App extends React.Component {
           if (this.state.sessionLength <= 1) return;
           return {
             sessionLength: state.sessionLength - 1,
-            time: state.time - 60
+            timerTime: state.timerTime - 60
           };
         });
       }
     }
   }
 
+  tick() {
+    const newTime = this.state.timerTime - 1;
+    if (newTime >= 0) {
+      this.setState({
+        timerTime: newTime
+      });
+    } else {
+      clearInterval(this.state.timerId);
+      if (this.state.timerType === "session") {
+        this.setState(state => {
+          return { timerTime: state.breakLength * 60, timerType: "break" };
+        });
+      } else {
+        this.setState(state => {
+          return { timerTime: state.sessionLength * 60, timerType: "session" };
+        });
+      }
+      this.startTimer();
+    }
+  }
+
+  startTimer() {
+    let timerId = setInterval(() => {
+      this.tick();
+    }, 1000);
+    this.setState({
+      timerId: timerId
+    });
+  }
+
   reset() {
+    clearInterval(this.state.timerId);
     this.setState({
       breakLength: 5,
       sessionLength: 25,
-      time: 25 * 60,
+      timerTime: 25 * 60,
       timerState: "paused",
-      timerType: "session"
+      timerType: "session",
+      timerId: ""
     });
   }
 
@@ -88,13 +123,9 @@ class App extends React.Component {
           type="session"
           length={this.state.sessionLength}
         />
-        <Time
-          time={this.state.time}
-          type={this.state.timerType}
-          length={this.state.time}
-        />
+        <Time time={this.state.timerTime} type={this.state.timerType} />
         <button id="start_stop" onClick={this.changeTimerState.bind(this)}>
-          {this.state.timerState === "paused" ? "play" : "paused"}
+          {this.state.timerState === "paused" ? "play" : "pause"}
         </button>
         <button id="reset" onClick={this.reset.bind(this)}>
           reset
