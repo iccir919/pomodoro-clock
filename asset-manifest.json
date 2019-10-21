@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/static/css/main.cb9e985a.chunk.css",
+    "main.js": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/static/js/main.79340140.chunk.js",
+    "main.js.map": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/static/js/main.79340140.chunk.js.map",
+    "runtime-main.js": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/static/js/runtime-main.e96b5514.js",
+    "runtime-main.js.map": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/static/js/runtime-main.e96b5514.js.map",
+    "static/js/2.fd1cf378.chunk.js": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/static/js/2.fd1cf378.chunk.js",
+    "static/js/2.fd1cf378.chunk.js.map": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/static/js/2.fd1cf378.chunk.js.map",
+    "index.html": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/index.html",
+    "precache-manifest.8284b34d2cee3af81fb355199c875661.js": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/precache-manifest.8284b34d2cee3af81fb355199c875661.js",
+    "service-worker.js": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/service-worker.js",
+    "static/css/main.cb9e985a.chunk.css.map": "/iccir919/FCC-Frontend-Libraries-Projects/pomodoro-clock/static/css/main.cb9e985a.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e96b5514.js",
+    "static/js/2.fd1cf378.chunk.js",
+    "static/css/main.cb9e985a.chunk.css",
+    "static/js/main.79340140.chunk.js"
+  ]
+}
