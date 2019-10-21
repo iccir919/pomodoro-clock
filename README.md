@@ -1,3 +1,7 @@
+---
+permalink: /index.html
+---
+
 # Pomodoro Clock
 
 ## Helpful links
