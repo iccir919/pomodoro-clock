@@ -2,6 +2,7 @@ import React from "react";
 
 import LengthInput from "./LengthInput";
 import Time from "./Time";
+import Controls from "./Controls";
 
 import alarm from "./alarm.mp3";
 import "./App.css";
@@ -130,12 +131,11 @@ class App extends React.Component {
           length={this.state.sessionLength}
         />
         <Time time={this.state.timerTime} type={this.state.timerType} />
-        <button id="start_stop" onClick={this.changeTimerState.bind(this)}>
-          {this.state.timerState === "paused" ? "play" : "pause"}
-        </button>
-        <button id="reset" onClick={this.reset.bind(this)}>
-          reset
-        </button>
+        <Controls
+          changeTimerState={this.changeTimerState.bind(this)}
+          reset={this.reset.bind(this)}
+          timerState={this.state.timerState}
+        />
         <audio ref={this.audio} id="beep">
           <source src={alarm} type="audio/mpeg" />
           Your browser does not support the audio element.
