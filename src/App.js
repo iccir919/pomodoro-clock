@@ -1,11 +1,28 @@
 import React from "react";
 
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+
 import LengthInput from "./LengthInput";
 import Time from "./Time";
 import Controls from "./Controls";
 
 import alarm from "./alarm.mp3";
 import "./App.css";
+
+const useStyles = makeStyles(theme => ({
+  "@global": {
+    body: {
+      backgroundColor: theme.palette.common.white
+    }
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  }
+}));
 
 class App extends React.Component {
   constructor(props) {
@@ -117,30 +134,33 @@ class App extends React.Component {
   }
 
   render() {
+    const classes = useStyles();
     return (
-      <div className="App">
-        <h1>Pomodoro Clock</h1>
-        <LengthInput
-          onButtonClick={this.changeLength.bind(this)}
-          type="break"
-          length={this.state.breakLength}
-        />
-        <LengthInput
-          onButtonClick={this.changeLength.bind(this)}
-          type="session"
-          length={this.state.sessionLength}
-        />
-        <Time time={this.state.timerTime} type={this.state.timerType} />
-        <Controls
-          changeTimerState={this.changeTimerState.bind(this)}
-          reset={this.reset.bind(this)}
-          timerState={this.state.timerState}
-        />
+      <Container component="main" className="App">
+        <div className={classes.paper}>
+          <h1>Pomodoro Clock</h1>
+          <LengthInput
+            onButtonClick={this.changeLength.bind(this)}
+            type="break"
+            length={this.state.breakLength}
+          />
+          <LengthInput
+            onButtonClick={this.changeLength.bind(this)}
+            type="session"
+            length={this.state.sessionLength}
+          />
+          <Time time={this.state.timerTime} type={this.state.timerType} />
+          <Controls
+            changeTimerState={this.changeTimerState.bind(this)}
+            reset={this.reset.bind(this)}
+            timerState={this.state.timerState}
+          />
+        </div>
         <audio ref={this.audio} id="beep">
           <source src={alarm} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
-      </div>
+      </Container>
     );
   }
 }
