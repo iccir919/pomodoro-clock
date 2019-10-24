@@ -1,27 +1,12 @@
 import React from "react";
 
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-
 import LengthInput from "./LengthInput";
 import Time from "./Time";
 
+import ProgressBar from "react-bootstrap/ProgressBar";
+
 import alarm from "./alarm.mp3";
 import "./App.css";
-
-const useStyles = makeStyles(theme => ({
-  "@global": {
-    body: {
-      backgroundColor: theme.palette.common.white
-    }
-  },
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  }
-}));
 
 class App extends React.Component {
   constructor(props) {
@@ -133,7 +118,6 @@ class App extends React.Component {
   }
 
   render() {
-    const classes = useStyles();
     return (
       <div className="App">
         <h1>Pomodoro Clock</h1>
@@ -148,6 +132,15 @@ class App extends React.Component {
           length={this.state.sessionLength}
         />
         <Time time={this.state.timerTime} type={this.state.timerType} />
+        <ProgressBar
+          min={0}
+          max={
+            this.state.timerType === "session"
+              ? this.state.sessionLength * 60
+              : this.state.breakLength * 60
+          }
+          now={this.state.timerTime}
+        />
         <button id="start_stop" onClick={this.changeTimerState.bind(this)}>
           {this.state.timerState === "paused" ? "play" : "pause"}
         </button>

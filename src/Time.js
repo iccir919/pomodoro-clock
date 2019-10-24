@@ -10,9 +10,9 @@ function Time(props) {
   if (minutes < 10) {
     minutes = "0" + minutes;
   }
-
+  document.title = `${minutes}:${seconds} - Pomodoro Clock`;
   return (
-    <div>
+    <div className="time">
       <h2 id="timer-label">{props.type}</h2>
       <h3 id="time-left">{`${minutes}:${seconds}`}</h3>
     </div>
