@@ -3,6 +3,10 @@ body {
   height: 100%;
 }
 
+.App {
+  min-width: 500px;
+}
+
 body {
   display: -ms-flexbox;
   display: -webkit-box;
@@ -16,4 +20,9 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f5f5f5;
+  text-align: center !important;
+}
+
+.length-number {
+  font-size: 150%;
 }

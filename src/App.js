@@ -3,6 +3,10 @@ import React from "react";
 import LengthInput from "./LengthInput";
 import Time from "./Time";
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 import alarm from "./alarm.mp3";
@@ -119,18 +123,25 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <Container className="App">
         <h1>Pomodoro Clock</h1>
-        <LengthInput
-          onButtonClick={this.changeLength.bind(this)}
-          type="break"
-          length={this.state.breakLength}
-        />
-        <LengthInput
-          onButtonClick={this.changeLength.bind(this)}
-          type="session"
-          length={this.state.sessionLength}
-        />
+        <Row>
+          <Col>
+            <LengthInput
+              onButtonClick={this.changeLength.bind(this)}
+              type="break"
+              length={this.state.breakLength}
+            />
+          </Col>
+          <Col>
+            <LengthInput
+              onButtonClick={this.changeLength.bind(this)}
+              type="session"
+              length={this.state.sessionLength}
+            />
+          </Col>
+        </Row>
+
         <Time time={this.state.timerTime} type={this.state.timerType} />
         <ProgressBar
           min={0}
@@ -141,17 +152,24 @@ class App extends React.Component {
           }
           now={this.state.timerTime}
         />
-        <button id="start_stop" onClick={this.changeTimerState.bind(this)}>
-          {this.state.timerState === "paused" ? "play" : "pause"}
-        </button>
-        <button id="reset" onClick={this.reset.bind(this)}>
-          reset
-        </button>
+        <Row className="p-3">
+          <Col>
+            <Button id="start_stop" onClick={this.changeTimerState.bind(this)}>
+              {this.state.timerState === "paused" ? "play" : "pause"}
+            </Button>
+          </Col>
+          <Col>
+            <Button id="reset" onClick={this.reset.bind(this)}>
+              reset
+            </Button>
+          </Col>
+        </Row>
+
         <audio ref={this.audio} id="beep">
           <source src={alarm} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
-      </div>
+      </Container>
     );
   }
 }
