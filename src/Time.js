@@ -15,6 +15,10 @@ function Time(props) {
     <div className="time">
       <h2 id="timer-label">{props.type}</h2>
       <h3 id="time-left">{`${minutes}:${seconds}`}</h3>
+      <progress 
+        max={props.type === "session" ? props.sessionLength * 60 : props.breakLength * 60}
+        value={props.time}
+      ></progress>
     </div>
   );
 }

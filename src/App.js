@@ -135,7 +135,12 @@ class App extends React.Component {
             />
         </div>
 
-        <Time time={this.state.timerTime} type={this.state.timerType} />
+        <Time 
+          time={this.state.timerTime} 
+          type={this.state.timerType}
+          breakLength={this.state.breakLength}
+          sessionLength={this.state.sessionLength}
+        />
         <div >
             <button className="control-button play-pause" id="start_stop" onClick={this.changeTimerState.bind(this)}>
               {this.state.timerState === "paused" ? "play" : "pause"}
