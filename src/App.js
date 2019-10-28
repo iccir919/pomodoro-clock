@@ -113,10 +113,10 @@ class App extends React.Component {
         />
 
         <div>
-          <button className="control-button" onClick={this.handlePomodoroClock}>
+          <button className="control-button start-pause" onClick={this.handlePomodoroClock}>
             {this.state.isRunning ? 'Pause' : 'Start'}
           </button>
-          <button className="control-button" onClick={this.reset}>Reset</button>
+          <button className="control-button reset" onClick={this.reset}>Reset</button>
         </div>
 
         <audio ref={this.audio} id="beep">

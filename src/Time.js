@@ -9,7 +9,7 @@ function Time(props) {
   return (
     <div>
       <h2>{props.isSession ? "session" : "break"}</h2>
-      <p>{`${minutes}:${seconds}`}</p>
+      <p className="time-number">{`${minutes}:${seconds}`}</p>
       <progress 
         max={props.startingTime}
         value={props.startingTime - props.elapsedTime}
