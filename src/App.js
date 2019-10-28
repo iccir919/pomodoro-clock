@@ -25,7 +25,9 @@ class App extends React.Component {
   } 
 
   handleLengthChange = (type, amount) => {
-    if(this.state[`${type}Length`] === 1) return;
+    if(this.state.isRunning 
+      || this.state[`${type}Length`] === 1 
+      || this.state[`${type}Length`] === 60 ) return;
 
     if (type === "break") {
       this.setState((prevState) => ({
@@ -100,7 +102,9 @@ class App extends React.Component {
         </div>
 
         <Time 
-          remainingTime={(this.state.isSession ? this.state.sessionLength * 60000 : this.state.breakLength * 60000) - this.state.elapsedTime}
+          remainingTime={(this.state.isSession ? 
+            this.state.sessionLength * 60000 : 
+            this.state.breakLength * 60000) - this.state.elapsedTime}
           isSession={this.state.isSession}
         />
 
