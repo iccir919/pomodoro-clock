@@ -44,6 +44,7 @@ class App extends React.Component {
     if (this.state.isRunning){
       const maximumTime = this.state.isSession ? this.state.sessionLength * 60000 : this.state.breakLength * 60000;
       if (this.state.elapsedTime >= maximumTime) {
+        this.audio.current.play();
         this.setState(prevState => ({
           isSession: !prevState.isSession,
           elapsedTime: 0
@@ -71,6 +72,8 @@ class App extends React.Component {
   }
 
   reset = () => {
+    this.audio.current.pause();
+    this.audio.current.currentTime = 0;
     this.setState({
       breakLength: 5,
       sessionLength: 25,
