@@ -12,107 +12,71 @@ class App extends React.Component {
     this.state = {
       breakLength: 5,
       sessionLength: 25,
-      timerTime: 25 * 60,
-      timerState: "paused",
-      timerType: "session",
-      timerId: ""
+      isRunning: false,
+      previousTime: 0,
+      elapsedTime: 0,
+      isSession: true
     };
     this.audio = React.createRef();
   }
 
-  changeTimerState() {
-    if (this.state.timerState === "paused") {
-      this.setState({
-        timerState: "playing"
-      });
-      this.startTimer();
+  componentDidMount() {
+    this.intervalID = setInterval(() => this.tick(), 100)
+  } 
+
+  handleLengthChange = (type, amount) => {
+    if(this.state[`${type}Length`] === 1) return;
+
+    if (type === "break") {
+      this.setState((prevState) => ({
+        breakLength: prevState.breakLength += amount
+      }));
     } else {
-      this.setState({
-        timerState: "paused"
-      });
-      clearInterval(this.state.timerId);
+      this.setState((prevState) => ({
+        sessionLength: prevState.sessionLength += amount
+      }));
     }
   }
 
-  changeLength(direction, type) {
-    if (this.state.timerState === "playing") return;
-
-    if (direction === "increase") {
-      if (this.state.breakLength === 60) return;
-      if (type === "break") {
-        this.setState(state => {
-          return { breakLength: state.breakLength + 1 };
-        });
+  tick = () => {
+    if (this.state.isRunning){
+      const maximumTime = this.state.isSession ? this.state.sessionLength * 60000 : this.state.breakLength * 60000;
+      if (this.state.elapsedTime >= maximumTime) {
+        this.setState(prevState => ({
+          isSession: !prevState.isSession,
+          elapsedTime: 0
+        }));
       } else {
-        if (this.state.sessionLength === 60) return;
-        this.setState(state => {
-          return {
-            sessionLength: state.sessionLength + 1,
-            timerTime: state.timerTime + 60
-          };
-        });
-      }
-    } else {
-      if (type === "break") {
-        if (this.state.breakLength <= 1) return;
-        this.setState(state => {
-          return { breakLength: state.breakLength - 1 };
-        });
-      } else {
-        this.setState(state => {
-          if (this.state.sessionLength <= 1) return;
-          return {
-            sessionLength: state.sessionLength - 1,
-            timerTime: state.timerTime - 60
-          };
-        });
+        const now = Date.now();
+        this.setState(prevState => ({
+            previousTime: now,
+            elapsedTime: prevState.elapsedTime + (now - prevState.previousTime)
+        }));
       }
     }
   }
 
-  tick() {
-    const newTime = this.state.timerTime - 1;
-    if (newTime >= 0) {
-      this.setState({
-        timerTime: newTime
-      });
-    } else {
-      this.audio.current.play();
-      clearInterval(this.state.timerId);
-      if (this.state.timerType === "session") {
-        this.setState(state => {
-          return { timerTime: state.breakLength * 60, timerType: "break" };
-        });
-      } else {
-        this.setState(state => {
-          return { timerTime: state.sessionLength * 60, timerType: "session" };
-        });
+  handlePomodoroClock = () => {
+    this.setState(prevState => {
+      return {
+          isRunning: !prevState.isRunning
       }
-      this.startTimer();
-    }
-  }
-
-  startTimer() {
-    let timerId = setInterval(() => {
-      this.tick();
-    }, 1000);
-    this.setState({
-      timerId: timerId
     });
+
+    if(!this.state.isRunning) {
+      this.setState({previousTime: Date.now()})
+    } 
   }
 
-  reset() {
-    clearInterval(this.state.timerId);
-    this.audio.current.pause();
-    this.audio.current.currentTime = 0;
+  reset = () => {
     this.setState({
       breakLength: 5,
       sessionLength: 25,
-      timerTime: 25 * 60,
-      timerState: "paused",
-      timerType: "session",
-      timerId: ""
-    });
+      isRunning: false,
+      previousTime: 0,
+      elapsedTime: 0,
+      isSession: true
+    })
   }
 
   render() {
@@ -122,32 +86,29 @@ class App extends React.Component {
           <h1>Pomodoro Clock</h1>
         </header>
 
-        <div className="length-input-container">
-            <LengthInput
-              onButtonClick={this.changeLength.bind(this)}
-              type="break"
-              length={this.state.breakLength}
-            />
-            <LengthInput
-              onButtonClick={this.changeLength.bind(this)}
-              type="session"
-              length={this.state.sessionLength}
-            />
+        <div className="length-inputs-container">
+          <LengthInput 
+            type="break"
+            length={this.state.breakLength}
+            handleChange={this.handleLengthChange}
+          />
+          <LengthInput
+            type="session"
+            length={this.state.sessionLength}
+            handleChange={this.handleLengthChange}
+          />
         </div>
 
         <Time 
-          time={this.state.timerTime} 
-          type={this.state.timerType}
-          breakLength={this.state.breakLength}
-          sessionLength={this.state.sessionLength}
+          remainingTime={(this.state.isSession ? this.state.sessionLength * 60000 : this.state.breakLength * 60000) - this.state.elapsedTime}
+          isSession={this.state.isSession}
         />
-        <div >
-            <button className="control-button play-pause" id="start_stop" onClick={this.changeTimerState.bind(this)}>
-              {this.state.timerState === "paused" ? "play" : "pause"}
-            </button>
-            <button className="control-button reset" id="reset" onClick={this.reset.bind(this)}>
-              reset
-            </button>
+
+        <div>
+          <button className="control-button" onClick={this.handlePomodoroClock}>
+            {this.state.isRunning ? 'Pause' : 'Start'}
+          </button>
+          <button className="control-button" onClick={this.reset}>Reset</button>
         </div>
 
         <audio ref={this.audio} id="beep">

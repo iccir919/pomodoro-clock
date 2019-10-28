@@ -1,26 +1,16 @@
 import React from "react";
 
 function Time(props) {
-  let seconds = props.time % 60;
-  let minutes = Math.floor(props.time / 60);
-
-  if (seconds < 10) {
-    seconds = "0" + seconds;
-  }
-  if (minutes < 10) {
-    minutes = "0" + minutes;
-  }
-  document.title = `${minutes}:${seconds} - Pomodoro Clock`;
+  let minutes = Math.floor(props.remainingTime / 60000);
+  if (minutes < 10) minutes = "0" + minutes;
+  let seconds = Math.floor(props.remainingTime % 60000 / 1000);
+  if (seconds < 10) seconds = "0" + seconds;
   return (
-    <div className="time">
-      <h2 id="timer-label">{props.type}</h2>
-      <h3 id="time-left">{`${minutes}:${seconds}`}</h3>
-      <progress 
-        max={props.type === "session" ? props.sessionLength * 60 : props.breakLength * 60}
-        value={props.time}
-      ></progress>
+    <div>
+      <h2>{props.isSession ? "session" : "break"}</h2>
+      <p>{`${minutes}:${seconds}`}</p>
     </div>
-  );
+  )
 }
 
 export default Time;

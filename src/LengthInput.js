@@ -3,12 +3,12 @@ import React from "react";
 function LengthInput(props) {
   return (
     <div>
-      <h5 id={`${props.type}-label`}>{`${props.type} length`}</h5>
+      <h3 id={`${props.type}-label`}>{`${props.type} length`}</h3>
       <div className="length-input">
         <button
           id={`${props.type}-decrement`}
-          onClick={props.onButtonClick.bind(this, "decrease", props.type)}
           className="length-input-action decrement"
+          onClick={() => props.handleChange(props.type, -1)}
         >
           -
         </button>
@@ -17,8 +17,8 @@ function LengthInput(props) {
         </span>
         <button
           id={`${props.type}-increment`}
-          onClick={props.onButtonClick.bind(this, "increase", props.type)}
           className="length-input-action increment"
+          onClick={() => props.handleChange(props.type, 1)}
         >
           +
         </button>
