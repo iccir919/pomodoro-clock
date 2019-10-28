@@ -102,9 +102,10 @@ class App extends React.Component {
         </div>
 
         <Time 
-          remainingTime={(this.state.isSession ? 
+          startingTime={(this.state.isSession ? 
             this.state.sessionLength * 60000 : 
-            this.state.breakLength * 60000) - this.state.elapsedTime}
+            this.state.breakLength * 60000)}
+          elapsedTime={this.state.elapsedTime}
           isSession={this.state.isSession}
         />
 
