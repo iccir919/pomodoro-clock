@@ -1,19 +1,15 @@
 import React from "react";
 
 function Time(props) {
-  const remainingTime = props.startingTime - props.elapsedTime;
-  let minutes = Math.floor(remainingTime / 60000);
+  let minutes = Math.floor(props.remainingTime / 60);
+  let seconds = props.remainingTime % 60;
+  
   if (minutes < 10) minutes = "0" + minutes;
-  let seconds = Math.floor(remainingTime % 60000 / 1000);
   if (seconds < 10) seconds = "0" + seconds;
   return (
     <div>
-      <h2>{props.isSession ? "session" : "break"}</h2>
-      <p className="time-number">{`${minutes}:${seconds}`}</p>
-      <progress 
-        max={props.startingTime}
-        value={props.startingTime - props.elapsedTime}
-      ></progress>
+      <h2 id="timer-label">{props.isSession ? "session" : "break"}</h2>
+      <p id="time-left" className="time-number">{`${minutes}:${seconds}`}</p>
     </div>
   )
 }
