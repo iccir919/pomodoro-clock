@@ -46,8 +46,8 @@ class App extends React.Component {
 
       this.setState(prevState => ({
         isSession: !prevState.isSession,
-        remainingTime: prevState.isSession ? this.state.breakLength * 60 : 
-          this.state.sessionLength * 60,
+        remainingTime: prevState.isSession ? prevState.breakLength * 60 : 
+          prevState.sessionLength * 60,
       }));
     } else {
       this.setState(prevState => ({
@@ -109,6 +109,7 @@ class App extends React.Component {
         </div>
 
         <Time 
+          isSession={this.state.isSession}
           remainingTime={this.state.remainingTime}
           maximumTime={this.state.isSession ? this.state.sessionLength * 60
             : this.state.breakLength * 60}          
