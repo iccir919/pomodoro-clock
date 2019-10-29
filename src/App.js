@@ -110,7 +110,8 @@ class App extends React.Component {
 
         <Time 
           remainingTime={this.state.remainingTime}
-          isSession={this.state.isSession}
+          maximumTime={this.state.isSession ? this.state.sessionLength * 60
+            : this.state.breakLength * 60}          
         />
 
         <div>
