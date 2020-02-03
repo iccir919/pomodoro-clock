@@ -4,6 +4,6 @@ import PomodoroClock from "./PomodoroClock";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<App />, div);
+  ReactDOM.render(<PomodoroClock />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
