@@ -1,4 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import PomodoroClock from "./PomodoroClock";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<PomodoroClock />, document.getElementById("root"));
