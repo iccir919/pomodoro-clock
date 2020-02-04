@@ -3,12 +3,14 @@
 ## Helpful links
 
 - [React.js Official Website](https://reactjs.org/)
+- [Jest](https://jestjs.io/)
+- [Enzyme](https://airbnb.io/enzyme/)
 
 ## Test Requirements
 
-- [ ] User Story #1: I can see an element with id="break-label" that contains a string (e.g. "Break Length").
+- [x] User Story #1: I can see an element with id="break-label" that contains a string (e.g. "Break Length").
 
-- [ ] User Story #2: I can see an element with id="session-label" that contains a string (e.g. "Session Length").
+- [x] User Story #2: I can see an element with id="session-label" that contains a string (e.g. "Session Length").
 
 - [ ] User Story #3: I can see two clickable elements with corresponding IDs: id="break-decrement" and id="session-decrement".
 
