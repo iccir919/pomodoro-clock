@@ -1,6 +1,6 @@
 import React from "react";
 
-import TimeDisplay from "../components/TimeDisplay";
+import TimeDisplay from "../components/Timer";
 import "./PomodoroClock.css";
 
 class PomodoroClock extends React.Component {
