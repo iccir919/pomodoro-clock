@@ -25,7 +25,7 @@ class PomodoroClock extends React.Component {
     return (
       <div className="PomodoroClock">
         <h1>Pomodoro Clock</h1>
-        Seconds: {this.state.seconds}
+        <p>Seconds: {this.state.seconds}</p>
       </div>
     );
   }
