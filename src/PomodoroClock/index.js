@@ -1,4 +1,6 @@
 import React from "react";
+
+import TimeDisplay from "../components/TimeDisplay";
 import "./PomodoroClock.css";
 
 class PomodoroClock extends React.Component {
@@ -25,7 +27,10 @@ class PomodoroClock extends React.Component {
     return (
       <div className="PomodoroClock">
         <h1>Pomodoro Clock</h1>
-        <p>Seconds: {this.state.seconds}</p>
+        <div>
+          <TimeDisplay type="break" />
+          <TimeDisplay type="session" />
+        </div>
       </div>
     );
   }
