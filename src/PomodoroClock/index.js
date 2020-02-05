@@ -6,7 +6,11 @@ import "./PomodoroClock.css";
 class PomodoroClock extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { seconds: 0 };
+    this.state = { 
+      seconds: 0,
+      breakLength: 5,
+      sessionLength: 25
+    };
   }
 
   tick() {
@@ -28,8 +32,8 @@ class PomodoroClock extends React.Component {
       <div className="PomodoroClock">
         <h1>Pomodoro Clock</h1>
         <div>
-          <TimeDisplay type="break" />
-          <TimeDisplay type="session" />
+          <TimeDisplay length={this.state.breakLength} type="break" />
+          <TimeDisplay length={this.state.sessionLength} type="session" />
         </div>
       </div>
     );
