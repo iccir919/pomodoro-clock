@@ -1,7 +1,7 @@
 # Pomodoro Clock
 
 ## Live Version
-- [Link to viewable version of the website](https://iccir919.github.io/random-quote-machine/)
+- [Link to viewable version of the website](https://iccir919.github.io/pomodoro-clock/)
 
 ## Project Objective
 
