@@ -66,11 +66,12 @@ class App extends React.Component {
   }
 
   controlAudio(command) {
-    const audioEl = document.getElementsByClassName("audio-element")[0];
+    const audioEl = document.getElementById("beep");
     if (command === "play") {
       audioEl.play()
     } else {
-      audioEl.stop()
+      audioEl.pause();
+      audioEl.currentTime = 0;
     }
   }
 
@@ -111,7 +112,7 @@ class App extends React.Component {
           timerControl={this.timerControl}
           reset={this.reset}
         />
-        <audio className="audio-element">
+        <audio id="beep">
           <source src={audio}></source>
         </audio>
       </div>
