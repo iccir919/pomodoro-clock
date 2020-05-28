@@ -3,6 +3,7 @@ import Timebox from "./Timebox";
 import Timer from "./Timer";
 
 import './App.css';
+import audio from "./bell-sound.mp3"
 
 class App extends React.Component {
 
@@ -19,6 +20,7 @@ class App extends React.Component {
 
     this.adjustLength = this.adjustLength.bind(this);
     this.timerControl = this.timerControl.bind(this);
+    this.controlAudio = this.controlAudio.bind(this);
     this.reset = this.reset.bind(this);
   }
 
@@ -26,6 +28,7 @@ class App extends React.Component {
     if (this.state.isPaused) {
       const timerID = setInterval(() => {
         if (this.state.timeLeft === 0) {
+          this.controlAudio("play");
           const newType = this.state.timerType === "session" ? "break" : "session";
           this.setState((prevState) => ({
             timerType: newType,
@@ -62,7 +65,17 @@ class App extends React.Component {
     }))
   }
 
+  controlAudio(command) {
+    const audioEl = document.getElementsByClassName("audio-element")[0];
+    if (command === "play") {
+      audioEl.play()
+    } else {
+      audioEl.stop()
+    }
+  }
+
   reset() {
+    this.controlAudio("stop");
     clearInterval(this.state.timerID);
 
     this.setState({
@@ -98,6 +111,9 @@ class App extends React.Component {
           timerControl={this.timerControl}
           reset={this.reset}
         />
+        <audio className="audio-element">
+          <source src={audio}></source>
+        </audio>
       </div>
     );
   }
