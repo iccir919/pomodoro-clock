@@ -3,7 +3,11 @@
 ## Live Version
 - [Link to viewable version of the website](https://iccir919.github.io/pomodoro-clock/)
 
-## Project Objective
+## To - Do
+
+- [ ] Add a To-Do List
+
+## Project Objectives by freeCodeCamp
 
 Build a CodePen.io app that is functionally similar to this: https://codepen.io/freeCodeCamp/full/qRZeGZ.
 
@@ -62,8 +66,6 @@ Build a CodePen.io app that is functionally similar to this: https://codepen.io/
 - [x] User Story #27: The audio element with id="beep" must be 1 second or longer.
 
 - [x] User Story #28: The audio element with id of beep must stop playing and be rewound to the beginning when the element with the id of reset is clicked.
-
-## 
 
 **This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).**
 

@@ -92,7 +92,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <h1>Pomodoro Clock</h1>
+        <h1 id="logo">Pomodoro Clock</h1>
         <div className="timeboxes">
           <Timebox 
             length={this.state.sessionLength} 
