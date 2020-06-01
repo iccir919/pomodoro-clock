@@ -5,7 +5,8 @@
 
 ## To - Do
 
-- [ ] Add a To-Do List
+- [ ] Add a To-Do List; Make more detailed User Stories
+- [ ] Change session to work. Have session after both the words break and work
 
 ## Project Objectives by freeCodeCamp
 

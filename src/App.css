@@ -31,7 +31,7 @@ h1,
 .session-length-display {
     font-weight: 900;
     margin-top: 0;
-    font-size: 2.5em;
+    font-size: 3.5em;
     margin-bottom: 20px;
 }
 
@@ -75,13 +75,26 @@ h3 {
     outline:0;
 }
 
-.timer {
-    margin-top: 3em;
-}
 
 .timer-display {
     font-weight: 900;
     font-size: 4em;
     margin-top: 0;
     margin-bottom: 15px;
+}
+
+.progress-bar {
+    margin: auto;
+    position: relative;
+    height: 40px;
+    width: 350px;
+    border-radius: 50px;
+    border: 3px solid #f8f3f1;
+}
+
+.filler {
+    background: #f8f3f1;
+    height: 100%;
+    border-radius: inherit;
+    transition: width .2s ease-in;
 }

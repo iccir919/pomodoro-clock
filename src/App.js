@@ -1,6 +1,7 @@
 import React from 'react';
 import Timebox from "./Timebox";
 import Timer from "./Timer";
+import ProgressBar from "./ProgressBar"
 
 import './App.css';
 import audio from "./bell-sound.mp3"
@@ -112,6 +113,12 @@ class App extends React.Component {
           timerControl={this.timerControl}
           reset={this.reset}
         />
+        <ProgressBar 
+          percentage={
+            this.state.timerType === "session" ? 
+            (this.state.timeLeft / (this.state.sessionLength * 60)) * 100 :
+            (this.state.timeLeft / (this.state.breakLength * 60)) * 100
+          } />
         <audio id="beep">
           <source src={audio}></source>
         </audio>

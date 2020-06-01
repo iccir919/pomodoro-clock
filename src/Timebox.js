@@ -4,7 +4,6 @@ const Timebox = (props) => {
     return (
         <div className="timebox">
             <h3 className="section-heading" id={props.type + "-label"}>{props.type} length</h3>
-            <p className="session-length-display" id={props.type +  "-length"}>{props.length}</p>
             <button  
                 className="rounded-pill"
                 id={props.type + "-decrement"}
@@ -19,6 +18,8 @@ const Timebox = (props) => {
             >
                 increment
             </button>
+            <p className="session-length-display" id={props.type +  "-length"}>{props.length}</p>
+
         </div>
     )
 }
