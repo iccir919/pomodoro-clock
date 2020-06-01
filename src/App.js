@@ -40,6 +40,7 @@ class App extends React.Component {
             timeLeft: prevState.timeLeft - 1
           }))
         }
+        document.title = transformTime(this.state.timeLeft) + " - Pomodoro Clock";
       }, 1000);
 
       this.setState({
@@ -47,6 +48,8 @@ class App extends React.Component {
         isPaused: false
       })
     } else {
+
+      document.title = "Pomodoro Clock"
       clearInterval(this.state.timerID);
       this.setState({
         isPaused: true
@@ -128,3 +131,11 @@ class App extends React.Component {
 }
 
 export default App;
+
+const transformTime = (time) => {
+  let hours = Math.floor(time / 60);
+  if (hours < 10) hours = "0" + hours;
+  let seconds = time % 60;
+  if (seconds < 10) seconds = "0" + seconds;
+  return `${hours}:${seconds}`;
+}
