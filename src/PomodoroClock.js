@@ -1,10 +1,10 @@
 import React from 'react';
-import Timebox from "./Timebox";
-import Timer from "./Timer";
-import ProgressBar from "./ProgressBar"
+import Timebox from "./components/Timebox";
+import Timer from "./components/Timer";
+import ProgressBar from "./components/ProgressBar"
 
-import './App.css';
-import audio from "./bell-sound.mp3"
+import './style/App.css';
+import audio from "./assets/bell-sound.mp3"
 
 class App extends React.Component {
 

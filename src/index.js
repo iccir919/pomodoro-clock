@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import "./normalize.css";
-import App from './App';
+import "./style/normalize.css";
+import PomodoroClock from './PomodoroClock';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PomodoroClock />
   </React.StrictMode>,
   document.getElementById('root')
 );
