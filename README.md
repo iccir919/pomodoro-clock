@@ -3,11 +3,6 @@
 ## Live Version
 - [Link to viewable version of the website](https://iccir919.github.io/pomodoro-clock/)
 
-## To - Do
-
-- [ ] Add a To-Do List; Make more detailed User Stories
-- [ ] Change session to work. Have session after both the words break and work
-
 ## Project Objectives by freeCodeCamp
 
 Build a CodePen.io app that is functionally similar to this: https://codepen.io/freeCodeCamp/full/qRZeGZ.
