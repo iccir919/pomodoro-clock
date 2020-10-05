@@ -63,7 +63,7 @@ Build a CodePen.io app that is functionally similar to this: https://codepen.io/
 
 - [x] User Story #28: The audio element with id of beep must stop playing and be rewound to the beginning when the element with the id of reset is clicked.
 
-**This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).**
+# This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
