@@ -1,14 +1,17 @@
+$primary-color:#C55E5E;
+
 body {
     text-align: center;
     font-family: "Helvetica Neue", "Arial", sans-serif;
-    background-color: #C55E5E;
+    background-color: $primary-color;
+    
+    .app {
+        height: 100 vh;
+        max-width: 750px;
+        margin: auto;
+    }
 }
 
-.app {
-    height: 100 vh;
-    max-width: 750px;
-    margin: auto;
-}
 
 .timeboxes {
     display: flex;

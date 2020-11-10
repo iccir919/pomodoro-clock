@@ -3,7 +3,11 @@
 ## Live Version
 - [Link to viewable version of the website](https://iccir919.github.io/pomodoro-clock/)
 
-## Project Objectives by freeCodeCamp
+## Project Objectives inspired by content by freeCodeCamp
+- [ ] Upgrade current CSS stylesheet content to utilize SASS features better
+- [ ] Add Redux
+
+## Project Objectives provided by freeCodeCamp
 
 Build a CodePen.io app that is functionally similar to this: https://codepen.io/freeCodeCamp/full/qRZeGZ.
 
