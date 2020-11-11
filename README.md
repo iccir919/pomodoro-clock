@@ -1,11 +1,12 @@
 # Pomodoro Clock
 
-## Live Version
-- [Link to viewable version of the website](https://iccir919.github.io/pomodoro-clock/)
+## [Live Version](https://iccir919.github.io/pomodoro-clock/)
 
-## Project Objectives inspired by content by freeCodeCamp
+
+## Personal Objectives provided by myself
 - [ ] Upgrade current CSS stylesheet content to utilize SASS features better
-- [ ] Add Redux
+- [ ] Implement Redux, React-Redux
+- [ ] New feature: a To Do list (would require another Redux reducer in addition to timer one)
 
 ## Project Objectives provided by freeCodeCamp
 
