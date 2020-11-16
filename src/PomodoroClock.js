@@ -3,8 +3,9 @@ import Timebox from "./components/Timebox";
 import Timer from "./components/Timer";
 import ProgressBar from "./components/ProgressBar"
 
-import './style/App.scss';
-import audio from "./assets/bell-sound.mp3"
+import './PomodoroClock.scss';
+
+import audio from "./assets/bell-sound.mp3";
 
 class App extends React.Component {
 
