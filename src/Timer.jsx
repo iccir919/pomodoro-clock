@@ -1,10 +1,10 @@
 function Timer({ type, length }) {
     return <>
-        <h2 id={`${type}-label`}>{type.toUpperCase()}</h2>
+        <h2 class="text-capitalize" id={`${type}-label`}>{type}</h2>
         <div>
-            <button id={`${type}-decrement`}>-</button>
-            <span id={`${type}-length`}>{length}</span>
-            <button id={`${type}-increment`}>+</button>
+            <button class="btn btn-danger" id={`${type}-decrement`}>-</button>
+            <span class="fs-3" id={`${type}-length`}>{length}</span>
+            <button class="btn btn-success" id={`${type}-increment`}>+</button>
         </div>
     </>
 }
