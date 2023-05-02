@@ -1,18 +1,23 @@
 import { useState } from 'react'
 import './App.css'
-import Clock from './Clock'
+import Timer from './Timer'
 
 function App() {
+  const [sessionLength, setSessionLength] = useState(25);
+  const [breakLength, setBreakLength] = useState(5);
+
   
 
   return (
     <>
       <h1>25 + 5 Clock</h1>
-      <Clock 
+      <Timer 
         type="session"
+        length={sessionLength}
       />
-      <Clock
+      <Timer
         type="break"
+        length={breakLength}
       />
     </>
   )
