@@ -1,36 +1,50 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Timer from './Timer'
 import Controller from './Controller'
+import Alarm from './Alarm'
+
+const initialSessionLength = 25
+const initalBreakLength = 5
 
 function App() {
-  const [sessionLength, setSessionLength] = useState(25)
-  const [breakLength, setBreakLength] = useState(5)
+  const [sessionLength, setSessionLength] = useState(initialSessionLength)
+  const [breakLength, setBreakLength] = useState(initalBreakLength)
   const [currentIntervalType, setCurrentIntervalType] = useState("session")
-  const [currentLength, setCurrentLength] = useState(1500)
+  const [currentLength, setCurrentLength] = useState(initialSessionLength * 60)
   const [currentStatus, setCurrentStatus] = useState("stopped")
-  const [currentIntervalId, setCurrentIntervalId] = useState(null)
+  const intervalRef = useRef(null)
+  const audioRef = useRef(null)
 
-  function handleLengthChange(type, amount) {
+  function handleTimerLengthChange(type, amount) {
     if (type === "session") {
-      if (sessionLength === 1 && amount < 0) return 1
-      if (sessionLength === 60 && amount > 0) return 60
       setSessionLength(sessionLength + amount)
-      setCurrentLength((sessionLength + amount) * 60)
+      if (currentIntervalType === "session") setCurrentLength((sessionLength + amount) * 60)
     }
 
     if (type === "break") {
-      if (breakLength === 1  && amount < 0) return 1
-      if (breakLength === 60  && amount > 0) return 60
       setBreakLength(breakLength + amount)
+      if (currentIntervalType === "break") setCurrentLength((sessionLength + amount) * 60)
     }
+  }
+
+  function handleResetEvent() {
+    setSessionLength(initialSessionLength)
+    setBreakLength(initalBreakLength)
+    setCurrentLength(initialSessionLength * 60)
+    setCurrentStatus("stopped")
+    setCurrentIntervalType("session")
+    clearInterval(intervalRef.current)
+    audioRef.current.pause()
+    audioRef.current.currentTime = 0
   }
 
   function handleStatusChange() {
     if (currentStatus === "stopped") {
-      setCurrentStatus("started")
-      let intervalId = setInterval(() => {
+      setCurrentStatus("active")
+      intervalRef.current = setInterval(() => {
         setCurrentLength(currentLength => {
           if (currentLength === 0) {
+            audioRef.current.play()
             setCurrentIntervalType(currentIntervalType => currentIntervalType === "session" ? "break" : "session")
             return currentIntervalType === "session" ? breakLength * 60 : sessionLength * 60
           } else {
@@ -38,10 +52,9 @@ function App() {
           }
         })
       }, 1000)
-      setCurrentIntervalId(intervalId)
-    } else if (currentStatus === "started") {
+    } else if (currentStatus === "active") {
       setCurrentStatus("stopped")
-      clearInterval(currentIntervalId)
+      clearInterval(intervalRef.current)
     }
   }
 
@@ -53,20 +66,25 @@ function App() {
         currentLength={currentLength}
         currentStatus={currentStatus}
         onStatusButtonClick={handleStatusChange}
+        onResetButtonClick={handleResetEvent}
       />
       <div className="row">
         <Timer 
           type="session"
           length={sessionLength}
-          onButtonClick={handleLengthChange}
+          status={currentStatus}
+          onIncrementChange={handleTimerLengthChange}
         />
         <Timer
           type="break"
           length={breakLength}
-          onButtonClick={handleLengthChange}
-          
+          status={currentStatus}
+          onIncrementChange={handleTimerLengthChange}
         />
       </div>
+      <Alarm 
+        ref={audioRef}
+      />
     </div>
   )
 }

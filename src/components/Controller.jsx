@@ -1,11 +1,11 @@
-function Controller({ currentStatus, currentType, currentLength, onStatusButtonClick }) {
+function Controller({ currentStatus, currentType, currentLength, onStatusButtonClick, onResetButtonClick }) {
 
     let startStopButton;
 
     if (currentStatus === "stopped") {
         startStopButton = <button type="button" className="btn btn-success btn-lg" onClick={() => onStatusButtonClick()} id="start_stop">Start</button>
     } else if (currentStatus = "started") {
-        startStopButton = <button type="button" className="btn btn-danger btn-lg" onClick={() => onStatusButtonClick()} id="start_stop">Stopped</button>
+        startStopButton = <button type="button" className="btn btn-danger btn-lg" onClick={() => onStatusButtonClick()} id="start_stop">Stop</button>
     }
 
 
@@ -15,9 +15,9 @@ function Controller({ currentStatus, currentType, currentLength, onStatusButtonC
                 <h1 className="display-6 text-capitalize" id="timer-label">{currentType}</h1>
                 <h1 className="display-2" id="time-left">{addZero(Math.floor(currentLength / 60))}:{addZero(currentLength % 60)}</h1>
             </div>
-            <div className="col">
+            <div className="col d-grid gap-2">
                 {startStopButton}
-                <button type="button" className="btn btn-secondary btn-lg" id="reset">Reset</button>
+                <button type="button" className="btn btn-secondary btn-lg" onClick={() => onResetButtonClick()} id="reset">Reset</button>
             </div>
         </div>
     )
